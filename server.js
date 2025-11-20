@@ -3,7 +3,7 @@ import cors from "cors";
 import Stripe from "stripe";
 
 const app = express();
-const stripe = new Stripe("***REMOVED***");
+const stripe = new Stripe("SECRET_KEY_HERE");
 
 app.use(cors());
 app.use(express.json());
