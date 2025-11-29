@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PD Bygg Jonkoping</title>
+    <link rel="stylesheet" href="kontakt.css">
     <link rel="stylesheet" href="stilmall.css">
     <link rel="stylesheet" href="mediaquery.css">
     <link rel="stylesheet" href="cart.css">
@@ -50,42 +51,21 @@
             </div>
         </div>
     </header>
-
-    <div class="formularcontainer">
-        <div class="contactform">
-            <form id="kontaktform" action="https://formsubmit.co/dahlberg.isac@gmail.com" method="POST">
-                <!-- Formsubmit extra -->
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="http://pdbygg.se/tack.html"> <!-- Ändra till din tack-sida -->
-
-                <label for="fname">Förnamn</label>
-                <input type="text" id="fname" name="firstname" placeholder="Ditt förnamn.." required>
-
-                <label for="lname">Efternamn</label>
-                <input type="text" id="lname" name="lastname" placeholder="Ditt efternamn.." required>
+    <div class="kontakt-container">
+        <div class="kontakt-kolumn">
+            <h4>Kontaktinformation</h4>
+            <div class="kontaktinfo">
+                <img src="bilder/image.png" class="kontaktbild">
+                <div class="kontaktinfo-text">
+                    <p>Email : hvabm@hotmail.com</p>
+                    <p>Tel : 0762082095</p>
+                    <p>Facebook : <a href="https://www.facebook.com/patrik.dahlberg.12" class="facebooklink">PD Bygg</a></p>
+                    <p>Instagram : <a href="https://www.instagram.com/pdbygg/?hl=en" class="instagramlink">@pdbygg</a></p>
+                </div>
                 
-                <label for="mobilnummer">Mobilnummer</label>
-                <input type="text" id="mobilnr" name="mobilnummer" placeholder="Mobilnr.." required>
-
-                <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" placeholder="E-mail.." required>
-
-                <label for="paket">Önskat arbete</label>
-                <select id="paketval" name="paketval" required>
-                    <option value="">...</option>
-                    <option value="Enkel">Badrum</option>
-                    <option value="Medel">Kök</option>
-                    <option value="Avancerad">Altan</option>
-                </select>
-
-                <label for="subject">Sammanfattning av önskat arbete</label>
-                <textarea id="subject" name="subject" placeholder="Skriv här.." style="height:200px" required></textarea>
-
-                <input type="submit" value="Skicka">
-            </form>
+            </div>
         </div>
     </div>
-
     <footer>
         <div class="footer-content">
             <div class="meny-footer">
@@ -93,7 +73,7 @@
                     <h4>Kontakt</h4> 
                     <ul>
                         <li><a href=""><i class="fa-solid fa-phone"></i>+46762082095</a></li>
-                        <li><a href=""><i class="fa-solid fa-envelope"></i>pdbyggab@hotmail.com</a></li>
+                        <li><a href=""><i class="fa-solid fa-envelope"></i>hvabm@hotmail.com</a></li>
                         <a href="arbete.html" class="bestallarbeteknapp">BESTÄLL ARBETE</a>
                     </ul>
                 </div>
@@ -110,8 +90,37 @@
             </div>
         </div>
         <p class="reklam">Made by webbkontakt.se</p>
-        <p class="copyright">©2025 pdbygg</p>
+    <div class="payment-icons">
+        <div class="payment-card">
+            <img src="icons/visa.svg" alt="Visa">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/mastercard.svg" alt="Mastercard">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/swish.svg" alt="Swish" id="swishicon">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/klarna.svg" alt="Klarna">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/paypal.svg" alt="PayPal">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/applepay.svg" alt="Apple Pay">
+        </div>
+        <div class="payment-card">
+            <img src="icons/googlepay.svg" alt="Google Pay">
+        </div>
+    </div>
+        <p class="copyright">©2014 pdbygg</p>
     </footer>
+
 
     <div id="cookie-overlay"></div>
     <div id="cookie-banner" class="cookie-banner">
@@ -127,6 +136,8 @@
         <button id="save-settings">Acceptera</button>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script.js"></script>
+
 </body>
 </html>

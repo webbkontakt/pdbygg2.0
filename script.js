@@ -1,20 +1,9 @@
-    window.addEventListener('scroll', function () {
-    const header = document.getElementById('myHeader');
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    document.getElementById('myHeader').classList.toggle('scrolled', scrollY > 50);
+    document.getElementById('logga').classList.toggle('scrolled', scrollY > 50);
+});
 
-  window.addEventListener('scroll', function () {
-    const logga = document.getElementById('logga');
-    if (window.scrollY > 50) {
-      logga.classList.add('scrolled');
-    } else {
-      logga.classList.remove('scrolled');
-    }
-  });
 
   //cookies//
 
@@ -57,19 +46,20 @@ document.addEventListener('DOMContentLoaded', () => {
   customize.addEventListener('click', () => {
     banner.style.display = 'none';
     settings.style.display = 'block';
-  });
+});
 
   saveSettings.addEventListener('click', () => {
-    const analytics = document.getElementById('analytics').checked;
-    const marketing = document.getElementById('marketing').checked;
+      const analytics = document.getElementById('analytics').checked;
+      const marketing = document.getElementById('marketing').checked;
 
-    localStorage.setItem('cookiesAccepted', JSON.stringify({
-      essential: true,
-      analytics: analytics,
-      marketing: marketing
-    }));
-    stängBanner();
+      localStorage.setItem('cookiesAccepted', JSON.stringify({
+        essential: true,
+        analytics,
+        marketing
+      }));
+      stängBanner();
   });
+
 });
 
 
