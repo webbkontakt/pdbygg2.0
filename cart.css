@@ -98,13 +98,11 @@ th {
     margin: 0 auto;
 }
 .emptycart{
-    height: 40px;
-    width: 150px;
     font-weight: bold;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border: 2px solid white;
+    background-color: white;
     border-radius: 5px;
-    background-color: rgb(253, 32, 32);
     color: white;
 }
 .proceed{
@@ -119,12 +117,15 @@ th {
     justify-content: center;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border-radius: 5px;
-    background-color: rgb(21, 133, 207);
+    background-color: rgb(78, 226, 85);
     color: white;
 }
+.proceed:hover{
+  cursor: pointer;
+}
 .continue{
-    height: 30px;
-    width: 160px;
+    height: 45px;
+    width: 120px;
     font-weight: bold;
     border: 2px solid white;
     font-size: 14px;
@@ -134,8 +135,8 @@ th {
     justify-content: center;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border-radius: 5px;
-    background-color: rgb(2, 48, 78);
-    color: white;
+    background-color: rgb(21, 133, 207);
+    color: rgb(255, 255, 255);
     margin-bottom: 100px;
 } 
 .nypris{

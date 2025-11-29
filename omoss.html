@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PD Bygg AB</title>
+    <title>PD Bygg Jonkoping</title>
+    <link rel="stylesheet" href="kontakt.css">
     <link rel="stylesheet" href="stilmall.css">
     <link rel="stylesheet" href="mediaquery.css">
     <link rel="stylesheet" href="cart.css">
@@ -17,9 +18,9 @@
                 <i class="fas fa-bars"></i>
             </button>
         </div>
-        <div class="logga">
+        <div id="logga">
             <a href="index.html">
-                <h1>PD Bygg AB</h1>
+                <h1>PD Bygg<br><span id="h1_logga_mindre">Jönköping</span></h1>
             </a>
         </div>
         <div id="meny">
@@ -34,7 +35,6 @@
             </nav>
         </div>
 
-        <!-- Kundvagnsikon -->
         <div class="cart-icon">
             <a href="cart.html">
                 <i class="fa-solid fa-cart-shopping"></i>
@@ -42,65 +42,46 @@
             </a>
         </div>
 
-    <div class="container">
-        <div class="welcome">
-            <div class="content">
-                <div class="content-text">
-                    <h2><span class="storbokstav">S</span>kapa ditt drömhem <br>med - PD Bygg</h2>
-                    <h3>Snickeri, Murning och Måleri</h3>
-                    <a href="kontakt.html" class="kontaktknapp">BESTÄLL ARBETE</a>
-                    <a href="omoss.html" id="readmore"></a>
-                </div>
-                <img src="bilder/badrum.png" id="badrum">
+        <div id="cart-panel" class="cart-panel hidden">
+            <h3>🛒 Din kundvagn</h3>
+            <div id="cart-items"></div>
+            <div class="cart-footer">
+                <p id="cart-total">Totalt: 0 kr</p>
+                <button id="clear-cart">Töm kundvagn</button>
             </div>
         </div>
-
-        <div class="info">
-            <div class="kraftborsten" data-name="Kraftborsten" data-price="500">
-                <div class="bild-wrap">
-                    <img src="bilder/toaborste1.png" class="normal">
-                    <img src="bilder/toaborste2.png" class="hover-img">
+    </header>
+    <div class="kontakt-container">
+        <div class="kontakt-kolumn">
+            <h4>Information om oss</h4>
+            <div class="omoss-text">
+                <div class="omoss-div">
+                    <h4>Vad vi gör:</h4>
+                    <p>Vårt jobb är att skapa ett hem som överträffar kundens förväntningar. 
+                        Vi bygger och renoverar allt du kan tänka dig i ett hem. Vill du renovera ditt badrum eller bygga ut ett extra rum i huset?
+                    Eller varför inte bygga en snygg altan i trädgården? <br>Då finns vi till hands för att hjälpa dig!
+                    Förutom murning, plattsättning och snickeri kan vi även hjälpa till med besiktning av din fastighet.
+                    Låt oss inte glömma våra produkter som är skapade för att hjälpa alla hantverkare därute för ett lättare arbetsliv.
+                    </p>
                 </div>
-                <p class="product-name">Kraftborste</p>
-                <p>för alla skruvdragare</p>
-                <div class="pris-container">
-                    <p class="pris">299:-</p>
-                    <button onclick="handleAddToCart(this, 'Kraftborsten', 299, 'bilder/toaborste1')" class="addtocart">KÖP</button>
+                <div class="omoss-div">
+                    <h4>Hur vi grundades:</h4>
+                    <p>Företaget grundades 2014 men vi har varit i byggbranchen i över 40 år. Det har sedan skoltiden varit vår
+                        passion att bygga och skapa fina hem som man stolt kan presentera för kunden.
+                    </p>
                 </div>
-            </div>
-
-            <div class="kraftborsten" data-name="Hinklåset" data-price="500">
-                <div class="bild-wrap">
-                    <img src="bilder/hink1.png" class="normal">
-                    <img src="bilder/hink2.png" class="hover-img">
-                </div>
-                <p class="product-name">Hinklås</p>
-                <p>för hinkar med <br>omkrets 30-50cm</p>
-                <div class="pris-container">
-                    <p class="pris">499:-</p>
-                    <button onclick="handleAddToCart(this, 'Hinklåset', 499, 'bilder/hink1')" class="addtocart">KÖP</button>
+                <div class="omoss-div">
+                    <h4>Framtiden</h4>
+                    <p>Vårt mål är att fortsätta leverera till våra kunder och tillsammans upfylla drömmar. Vi planerar också
+                        att expandera vår samling av produkter.
+                    </p>
                 </div>
             </div>
         </div>
+    </div>
+ 
 
-        <div class="instagram-div fade-in">
-            <a href="https://www.instagram.com/fidde.ku/">
-                <h3>Följ oss på Instagram</h3>
-                <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://www.instagram.com/pdbygg/?hl=en" class="instatagg">@pdbyggab</a>
-        </div>
 
-        <div class="extra-div fade-in">
-            <div class="extra-column2">
-                <img src="bilder/badrum.png" id="extra-fade-img">
-            </div>
-            <div class="extra-column1">
-                <h3 class="extrah3">TA HAND OM DITT HÅR HOS OSS</h3>
-                <h3 class="extra-h3">Vi hjälper dig med din behandling</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo fugiat ullam odit reiciendis, consectetur cupiditate illum, autem eum natus quo, nam aperiam. Amet minus exercitationem dolores, explicabo dolorum atque quis!</p>
-            </div>
-        </div>
 
     <footer>
         <div class="footer-content">
@@ -109,7 +90,7 @@
                     <h4>Kontakt</h4> 
                     <ul>
                         <li><a href=""><i class="fa-solid fa-phone"></i>+46762082095</a></li>
-                        <li><a href=""><i class="fa-solid fa-envelope"></i>pdbyggab@hotmail.com</a></li>
+                        <li><a href=""><i class="fa-solid fa-envelope"></i>hvabm@hotmail.com</a></li>
                         <a href="arbete.html" class="bestallarbeteknapp">BESTÄLL ARBETE</a>
                     </ul>
                 </div>
@@ -126,8 +107,37 @@
             </div>
         </div>
         <p class="reklam">Made by webbkontakt.se</p>
-        <p class="copyright">©2025 pdbygg</p>
+    <div class="payment-icons">
+        <div class="payment-card">
+            <img src="icons/visa.svg" alt="Visa">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/mastercard.svg" alt="Mastercard">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/swish.svg" alt="Swish" id="swishicon">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/klarna.svg" alt="Klarna">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/paypal.svg" alt="PayPal">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/applepay.svg" alt="Apple Pay">
+        </div>
+        <div class="payment-card">
+            <img src="icons/googlepay.svg" alt="Google Pay">
+        </div>
+    </div>
+        <p class="copyright">©2014 pdbygg</p>
     </footer>
+
 
     <div id="cookie-overlay"></div>
     <div id="cookie-banner" class="cookie-banner">
@@ -143,6 +153,8 @@
         <button id="save-settings">Acceptera</button>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script.js"></script>
+
 </body>
 </html>

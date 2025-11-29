@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PD Bygg AB</title>
+    <title>PD Bygg Jonkoping</title>
     <link rel="stylesheet" href="stilmall.css">
     <link rel="stylesheet" href="mediaquery.css">
     <link rel="stylesheet" href="cart.css">
@@ -19,7 +19,7 @@
         </div>
         <div id="logga">
             <a href="index.html">
-                <h1>PD Bygg AB</h1>
+                <h1>PD Bygg<br><span id="h1_logga_mindre">Jönköping</span></h1>
             </a>
         </div>
         <div id="meny">
@@ -34,7 +34,6 @@
             </nav>
         </div>
 
-        <!-- Kundvagnsikon -->
         <div class="cart-icon">
             <a href="cart.html">
                 <i class="fa-solid fa-cart-shopping"></i>
@@ -42,7 +41,6 @@
             </a>
         </div>
 
-        <!-- Kundvagnspanel -->
         <div id="cart-panel" class="cart-panel hidden">
             <h3>🛒 Din kundvagn</h3>
             <div id="cart-items"></div>
@@ -53,31 +51,50 @@
         </div>
     </header>
         <div class="produkter">
-            <div class="kraftborsten" data-name="Kraftborsten" data-price="500">
-                <div class="bild-wrap">
+            <div class="produkter-div">
+                <div class="kraftborsten" data-name="Kraftborsten" data-price="500">
+                <a href="kraftborse.html">
+                    <div class="bild-wrap">
                     <img src="bilder/toaborste1.png" class="normal">
                     <img src="bilder/toaborste2.png" class="hover-img">
-                </div>
-                <p class="product-name">Kraftborsten</p>
-                <p>för alla skruvdragare</p>
+                    </div>
+                    <p class="product-name">Kraftborsten</p>
+                    <p>för alla skruvdragare</p>
+                </a>
+                
                 <div class="pris-container">
-                    <p class="pris">299:-</p>
+                    <div class="pris-div">
+                        <p class="newprice">299:-</p>
+                    </div>
                     <button onclick="handleAddToCart(this, 'Kraftborsten', 299, 'bilder/toaborste1')" class="addtocart">KÖP</button>
                 </div>
             </div>
-
-            <div class="kraftborsten" data-name="Hinklåset" data-price="500">
-                <div class="bild-wrap">
+            <a href="kraftborse.html" class="semer">SE MER</a>
+            </div>
+            
+            <div class="produkter-div">
+                <div class="kraftborsten" data-name="Hinklåset" data-price="500">
+                <a href="hinklas.html">
+                    <div class="bild-wrap">
                     <img src="bilder/hink1.png" class="normal">
                     <img src="bilder/hink2.png" class="hover-img">
-                </div>
-                <p class="product-name">Hinklåset</p>
-                <p>för hinkar med <br>omkrets 30-50cm</p>
+                    </div>
+                    <p class="product-name">Hinklåset</p>
+                    <p>för hinkar med <br>omkrets 30-50cm</p>
+                </a>
+                
                 <div class="pris-container">
-                    <p class="pris">499:-</p>
+                    <div class="pris-div">
+                        <p class="newprice">379:-</p>
+                    </div>
                     <button onclick="handleAddToCart(this, 'Hinklåset', 499, 'bilder/hink1')" class="addtocart">KÖP</button>
                 </div>
+                
+                </div>
+                <a href="hinklas.html" class="semer">SE MER</a>
             </div>
+            
+            
         </div>
 
     <footer>

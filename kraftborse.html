@@ -51,40 +51,64 @@
         </div>
     </header>
 
-    <div class="formularcontainer">
-        <div class="contactform">
-            <form id="kontaktform" method="POST">
-                <!-- Formsubmit extra -->
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="http://127.0.0.1:5500/tack.html"> <!-- Ändra till din tack-sida -->
-
-                <label for="fname">Förnamn</label>
-                <input type="text" id="fname" name="firstname" placeholder="Ditt förnamn.." required>
-
-                <label for="lname">Efternamn</label>
-                <input type="text" id="lname" name="lastname" placeholder="Ditt efternamn.." required>
-                
-                <label for="mobilnummer">Mobilnummer</label>
-                <input type="text" id="mobilnr" name="mobilnummer" placeholder="Mobilnr.." required>
-
-                <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" placeholder="E-mail.." required>
-
-                <label for="paket">Önskat arbete</label>
-                <select id="paketval" name="paketval" required>
-                    <option value="">...</option>
-                    <option value="Enkel">Badrum</option>
-                    <option value="Medel">Kök</option>
-                    <option value="Avancerad">Altan</option>
-                </select>
-
-                <label for="subject">Sammanfattning av önskat arbete</label>
-                <textarea id="subject" name="subject" placeholder="Skriv här.." style="height:200px" required></textarea>
-
-                <input type="submit" value="Skicka">
-            </form>
+    <div class="produkt-container">
+        <div class="produkt-bilder">
+        <div class="huvudbild-container">
+        <img src="bilder/toaborste1.png" id="huvudbild" class="huvudbild" />
         </div>
-    </div>
+
+        <div class="mini-bilder">
+            <img src="bilder/toaborste1.png" onclick="document.getElementById('huvudbild').src=this.src;">
+            <img src="bilder/toaborste2.png" onclick="document.getElementById('huvudbild').src=this.src;">
+            </div>
+        </div>
+
+
+
+        <div class="produkt-info">
+            <h1>Kraftborste</h1>
+            <div class="produktpris-div">
+                <p class="oldprice">449:-</p>
+                <p class="newprice">299:-</p>
+            </div>
+            
+            <div class="recensioner">
+            ★★★★☆ (114 recensioner)
+            </div>
+
+
+            <div class="antal-valjare">
+            <label>Antal:</label>
+            <input type="number" id="antal" value="1" min="1">
+            </div>
+            <div class="color-div">
+                <p>Color:</p>
+                <span class="colorcircle"></span>
+            </div>
+
+            <div class="laggtill-div">
+                <button onclick="handleAddToCart(this, 'Kraftborsten', 299, 'bilder/toaborste1')" class="addtocart">Lägg till i kundvagnen</button>
+            </div>
+            
+
+            <div class="produkt-beskrivning" id="beskrivning">
+            <h3>Beskrivning</h3>
+            <p>
+            Denna kraftborste är perfekt för alla ytor som behöver rejäl rengöring.
+            Stark, tålig och redo att kämpa mot smutsen som om den hade superkrafter.
+            Här kan du städa både badrum, kök och till och med ufo-landningsplatser om du vill.
+            Texten är extra lång så du kan klicka på Visa mer och känna dig som en äventyrare.
+            Denna kraftborste är perfekt för alla ytor som behöver rejäl rengöring.
+            Stark, tålig och redo att kämpa mot smutsen som om den hade superkrafter.
+            Här kan du städa både badrum, kök och till och med ufo-landningsplatser om du vill.
+            Texten är extra lång så du kan klicka på Visa mer och känna dig som en äventyrare.
+            </p>
+            </div>
+
+
+            <div class="visa-mer" onclick="toggleBeskrivning()">Visa mer</div>
+            </div>
+        </div>
 
     <footer>
         <div class="footer-content">
@@ -110,6 +134,34 @@
             </div>
         </div>
         <p class="reklam">Made by webbkontakt.se</p>
+    <div class="payment-icons">
+        <div class="payment-card">
+            <img src="icons/visa.svg" alt="Visa">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/mastercard.svg" alt="Mastercard">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/swish.svg" alt="Swish" id="swishicon">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/klarna.svg" alt="Klarna">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/paypal.svg" alt="PayPal">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/applepay.svg" alt="Apple Pay">
+        </div>
+        <div class="payment-card">
+            <img src="icons/googlepay.svg" alt="Google Pay">
+        </div>
+    </div>
         <p class="copyright">©2025 pdbygg</p>
     </footer>
 
