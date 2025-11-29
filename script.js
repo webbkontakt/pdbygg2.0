@@ -28,22 +28,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const cookiesAccepted = localStorage.getItem('cookiesAccepted');
 
-  if (!cookiesAccepted) {
-    overlay.style.display = 'block';
-    banner.classList.add('visible');
-    document.body.classList.add('cookie-blocked');
-  } else {
+  function stängBanner() {
     overlay.style.display = 'none';
-    banner.classList.remove('visible');
+    banner.style.display = 'none';
     settings.style.display = 'none';
     document.body.classList.remove('cookie-blocked');
   }
 
-  function stängBanner() {
-    overlay.style.display = 'none';
-    banner.classList.remove('visible');
+  // Visa popup om inget val finns
+  if (!cookiesAccepted) {
+    overlay.style.display = 'block';
+    banner.style.display = 'block';
     settings.style.display = 'none';
-    document.body.classList.remove('cookie-blocked');
+    document.body.classList.add('cookie-blocked');
+  } else {
+    stängBanner();
   }
 
   acceptAll.addEventListener('click', () => {
@@ -54,6 +53,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
     stängBanner();
   });
+
+  customize.addEventListener('click', () => {
+    banner.style.display = 'none';
+    settings.style.display = 'block';
+  });
+
+  saveSettings.addEventListener('click', () => {
+    const analytics = document.getElementById('analytics').checked;
+    const marketing = document.getElementById('marketing').checked;
+
+    localStorage.setItem('cookiesAccepted', JSON.stringify({
+      essential: true,
+      analytics: analytics,
+      marketing: marketing
+    }));
+    stängBanner();
+  });
+});
+
 
   customize.addEventListener('click', () => {
     banner.classList.remove('visible');
