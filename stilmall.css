@@ -312,11 +312,7 @@ footer{
     width: 100%;
     background-color: #494949;
     color: white;
-<<<<<<< HEAD
     padding: 40px 0px;
-=======
-    padding: 70px 0px;
->>>>>>> 598087e1851e61b14e16b40db3845328aa3a6766
 }
 footer::before {
   content: "";
@@ -729,12 +725,9 @@ body.cookie-blocked .cookie-settings {
     height: auto;
     margin: 50px;
 }
-<<<<<<< HEAD
 .bildspel a:hover{
     transform: scale(0.95);
 }
-=======
->>>>>>> 598087e1851e61b14e16b40db3845328aa3a6766
 
 .texten {
     position: absolute;
