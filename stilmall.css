@@ -494,7 +494,7 @@ footer::before {
   left: 0;
   height: 100vh;
   width: 100vw;
-  background-color: rgba(0, 0, 0, 0.5); /* Grå bakgrund */
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 9998;
 }
 
@@ -513,67 +513,76 @@ footer::before {
   max-width: 90%;
   border-radius: 10px;
 }
+
 .cookie-banner button{
-    padding: 10px;
-    border-radius: 15px;
-    width: 200px;
-    height: 50px;
+  padding: 10px;
+  border-radius: 15px;
+  width: 200px;
+  height: 50px;
+  cursor: pointer;
 }
 
-#accept-all{
-    background-color: #b6e48b
+#accept-all {
+  background-color: #b6e48b;
 }
-#accept-all:hover{
-    background-color: #85d837;
+#accept-all:hover {
+  background-color: #85d837;
 }
-#customize:hover{
-    background-color: #bbbbbb;
+#customize:hover {
+  background-color: #bbbbbb;
 }
+
 /* Dölj element */
 .hidden {
   display: none;
 }
 
-/* Blockera scroll och klick */
+/* Blockera scroll men låt popupen vara klickbar */
 body.cookie-blocked {
   overflow: hidden;
 }
 
-body.cookie-blocked #cookie-overlay,
-body.cookie-blocked .cookie-banner,
-body.cookie-blocked .cookie-settings {
+.cookie-banner,
+.cookie-settings,
+#cookie-overlay {
   pointer-events: auto;
 }
 
+/* Checkbox-styling */
+#essential, #analytics, #marketing {
+  font-size: 20px;
+}
 
-#essential, #analytics, #marketing{
-    font-size: 20px;
+.cookie-settings label {
+  font-size: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0 auto 10px auto;
 }
-.cookie-settings label{
-    font-size: 20px;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 0 auto;
-}
+
 .cookie-settings p {
-    font-size: 22px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 22px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
-.cookie-settings button{
-    padding: 10px;
-    background-color: #b6e48b;
-    border-radius: 10px;
-    border-color: #646363;
-    width: 150px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 14px;
-    text-transform: uppercase;
+
+.cookie-settings button {
+  padding: 10px;
+  background-color: #b6e48b;
+  border-radius: 10px;
+  border-color: #646363;
+  width: 150px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
 }
-.cookie-settings button:hover{
-    background-color: #93db4f;
+
+.cookie-settings button:hover {
+  background-color: #93db4f;
 }
+
 .omoss-content{
     width: 100%;
     max-width: 100%;
