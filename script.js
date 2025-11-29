@@ -26,17 +26,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const customize = document.getElementById('customize');
   const saveSettings = document.getElementById('save-settings');
 
-  if (!overlay || !banner || !settings || !acceptAll || !customize || !saveSettings) return;
-
   const cookiesAccepted = localStorage.getItem('cookiesAccepted');
 
   if (!cookiesAccepted) {
     overlay.style.display = 'block';
-    banner.classList.remove('hidden');
+    banner.classList.add('visible');
     document.body.classList.add('cookie-blocked');
   } else {
     overlay.style.display = 'none';
-    banner.classList.add('hidden');
+    banner.classList.remove('visible');
+    settings.style.display = 'none';
+    document.body.classList.remove('cookie-blocked');
+  }
+
+  function stängBanner() {
+    overlay.style.display = 'none';
+    banner.classList.remove('visible');
     settings.style.display = 'none';
     document.body.classList.remove('cookie-blocked');
   }
@@ -51,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   customize.addEventListener('click', () => {
-    banner.classList.add('hidden');
+    banner.classList.remove('visible');
     settings.style.display = 'block';
   });
 
@@ -66,14 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
     stängBanner();
   });
-
-  function stängBanner() {
-    overlay.style.display = 'none';
-    banner.classList.add('hidden');
-    settings.style.display = 'none';
-    document.body.classList.remove('cookie-blocked');
-  }
 });
+
 
 
 const fadeEls = document.querySelectorAll('.fade-in');
