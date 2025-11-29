@@ -335,14 +335,13 @@ function handleAddToCart(button, name, price, imageUrl, stripePriceId) {
 
 async function goToCheckout() {
     try {
-        const cart = getCart(); // Hämta kundvagnen från localStorage
+        const cart = getCart();
 
         if (cart.length === 0) {
             alert("Din kundvagn är tom!");
             return;
         }
 
-        // Skicka kundvagnen till backend för att skapa en Stripe Checkout-session
         const response = await fetch("http://pdbygg.se/create-checkout-session", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -352,17 +351,16 @@ async function goToCheckout() {
         const data = await response.json();
 
         if (!data.url) {
-            console.error("Inget URL mottaget från backend:", data);
-            alert("Kunde inte starta checkout-session!");
+            alert("Kunde inte starta Stripe-checkout!");
             return;
         }
 
-        // Skicka användaren direkt till Stripe Checkout
+        // 🚀 Skicka kunden till Stripe
         window.location.href = data.url;
 
-    } catch (err) {
-        console.error("Fel vid kontakt med servern:", err);
-        alert("Fel vid kontakt med servern!");
+    } catch (error) {
+        console.error("Fel vid checkout:", error);
+        alert("Något gick fel vid checkout!");
     }
 }
 
