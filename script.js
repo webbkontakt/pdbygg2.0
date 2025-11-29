@@ -18,61 +18,63 @@
 
   //cookies//
 
+document.addEventListener('DOMContentLoaded', () => {
   const overlay = document.getElementById('cookie-overlay');
-const banner = document.getElementById('cookie-banner');
-const settings = document.getElementById('cookie-settings');
-const acceptAll = document.getElementById('accept-all');
-const customize = document.getElementById('customize');
-const saveSettings = document.getElementById('save-settings');
+  const banner = document.getElementById('cookie-banner');
+  const settings = document.getElementById('cookie-settings');
+  const acceptAll = document.getElementById('accept-all');
+  const customize = document.getElementById('customize');
+  const saveSettings = document.getElementById('save-settings');
 
-// Kontrollera om användaren redan har gjort ett val
-const cookiesAccepted = localStorage.getItem('cookiesAccepted');
+  if (!overlay || !banner || !settings || !acceptAll || !customize || !saveSettings) return;
 
-if (!cookiesAccepted) {
-  // Visa popup
-  overlay.style.display = 'block';
-  banner.classList.remove('hidden');
-  document.body.classList.add('cookie-blocked');
-} else {
-  // Döljer allting om val finns
-  overlay.style.display = 'none';
-  banner.classList.add('hidden');
-  settings.style.display = 'none';
-  document.body.classList.remove('cookie-blocked');
-}
+  const cookiesAccepted = localStorage.getItem('cookiesAccepted');
 
-acceptAll.addEventListener('click', () => {
-  localStorage.setItem('cookiesAccepted', JSON.stringify({
-    essential: true,
-    analytics: true,
-    marketing: true
-  }));
-  stängBanner();
+  if (!cookiesAccepted) {
+    overlay.style.display = 'block';
+    banner.classList.remove('hidden');
+    document.body.classList.add('cookie-blocked');
+  } else {
+    overlay.style.display = 'none';
+    banner.classList.add('hidden');
+    settings.style.display = 'none';
+    document.body.classList.remove('cookie-blocked');
+  }
+
+  acceptAll.addEventListener('click', () => {
+    localStorage.setItem('cookiesAccepted', JSON.stringify({
+      essential: true,
+      analytics: true,
+      marketing: true
+    }));
+    stängBanner();
+  });
+
+  customize.addEventListener('click', () => {
+    banner.classList.add('hidden');
+    settings.style.display = 'block';
+  });
+
+  saveSettings.addEventListener('click', () => {
+    const analytics = document.getElementById('analytics').checked;
+    const marketing = document.getElementById('marketing').checked;
+
+    localStorage.setItem('cookiesAccepted', JSON.stringify({
+      essential: true,
+      analytics: analytics,
+      marketing: marketing
+    }));
+    stängBanner();
+  });
+
+  function stängBanner() {
+    overlay.style.display = 'none';
+    banner.classList.add('hidden');
+    settings.style.display = 'none';
+    document.body.classList.remove('cookie-blocked');
+  }
 });
 
-customize.addEventListener('click', () => {
-  banner.classList.add('hidden');
-  settings.style.display = 'block';
-});
-
-saveSettings.addEventListener('click', () => {
-  const analytics = document.getElementById('analytics').checked;
-  const marketing = document.getElementById('marketing').checked;
-
-  localStorage.setItem('cookiesAccepted', JSON.stringify({
-    essential: true,
-    analytics: analytics,
-    marketing: marketing
-  }));
-  stängBanner();
-});
-
-function stängBanner() {
-  overlay.style.display = 'none';
-  banner.classList.add('hidden');
-  settings.style.display = 'none';
-  document.body.classList.remove('cookie-blocked');
-}
 
 const fadeEls = document.querySelectorAll('.fade-in');
 
@@ -351,17 +353,16 @@ async function goToCheckout() {
         const data = await response.json();
 
         if (!data.url) {
-            console.error("Inget URL mottaget från backend:", data);
-            alert("Kunde inte starta checkout-session!");
+            alert("Kunde inte starta Stripe-checkout!");
             return;
         }
 
-        // Skicka användaren direkt till Stripe Checkout
+        // 🚀 Skicka kunden till Stripe
         window.location.href = data.url;
 
-    } catch (err) {
-        console.error("Fel vid kontakt med servern:", err);
-        alert("Fel vid kontakt med servern!");
+    } catch (error) {
+        console.error("Fel vid checkout:", error);
+        alert("Något gick fel vid checkout!");
     }
 }
 
