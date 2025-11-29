@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PD Bygg AB</title>
+    <title>PD Bygg Jonkoping</title>
+    <link rel="stylesheet" href="kontakt.css">
     <link rel="stylesheet" href="stilmall.css">
     <link rel="stylesheet" href="mediaquery.css">
     <link rel="stylesheet" href="cart.css">
@@ -19,7 +20,7 @@
         </div>
         <div id="logga">
             <a href="index.html">
-                <h1>PD Bygg AB</h1>
+                <h1>PD Bygg<br><span id="h1_logga_mindre">Jönköping</span></h1>
             </a>
         </div>
         <div id="meny">
@@ -34,7 +35,6 @@
             </nav>
         </div>
 
-        <!-- Kundvagnsikon -->
         <div class="cart-icon">
             <a href="cart.html">
                 <i class="fa-solid fa-cart-shopping"></i>
@@ -42,7 +42,6 @@
             </a>
         </div>
 
-        <!-- Kundvagnspanel -->
         <div id="cart-panel" class="cart-panel hidden">
             <h3>🛒 Din kundvagn</h3>
             <div id="cart-items"></div>
@@ -52,11 +51,21 @@
             </div>
         </div>
     </header>
-
- 
-
-
-
+    <div class="kontakt-container">
+        <div class="kontakt-kolumn">
+            <h4>Kontaktinformation</h4>
+            <div class="kontaktinfo">
+                <img src="bilder/image.png" class="kontaktbild">
+                <div class="kontaktinfo-text">
+                    <p>Email : hvabm@hotmail.com</p>
+                    <p>Tel : 0762082095</p>
+                    <p>Facebook : <a href="https://www.facebook.com/patrik.dahlberg.12" class="facebooklink">PD Bygg</a></p>
+                    <p>Instagram : <a href="https://www.instagram.com/pdbygg/?hl=en" class="instagramlink">@pdbygg</a></p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
     <footer>
         <div class="footer-content">
             <div class="meny-footer">
@@ -64,7 +73,7 @@
                     <h4>Kontakt</h4> 
                     <ul>
                         <li><a href=""><i class="fa-solid fa-phone"></i>+46762082095</a></li>
-                        <li><a href=""><i class="fa-solid fa-envelope"></i>pdbyggab@hotmail.com</a></li>
+                        <li><a href=""><i class="fa-solid fa-envelope"></i>hvabm@hotmail.com</a></li>
                         <a href="arbete.html" class="bestallarbeteknapp">BESTÄLL ARBETE</a>
                     </ul>
                 </div>
@@ -81,8 +90,37 @@
             </div>
         </div>
         <p class="reklam">Made by webbkontakt.se</p>
-        <p class="copyright">©2025 pdbygg</p>
+    <div class="payment-icons">
+        <div class="payment-card">
+            <img src="icons/visa.svg" alt="Visa">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/mastercard.svg" alt="Mastercard">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/swish.svg" alt="Swish" id="swishicon">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/klarna.svg" alt="Klarna">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/paypal.svg" alt="PayPal">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/applepay.svg" alt="Apple Pay">
+        </div>
+        <div class="payment-card">
+            <img src="icons/googlepay.svg" alt="Google Pay">
+        </div>
+    </div>
+        <p class="copyright">©2014 pdbygg</p>
     </footer>
+
 
     <div id="cookie-overlay"></div>
     <div id="cookie-banner" class="cookie-banner">

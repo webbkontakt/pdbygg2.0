@@ -14,12 +14,12 @@ html, body{
 header{
     position: fixed;
     width: 100%;
-    height: 30px;
+    height: 70px;
     display: flex;
     align-items: center;
     flex-direction: row;
-    padding: 25px 0px 25px;
     background-color: white;
+    z-index: 9999;
 }
 header.scrolled{
     background-color: rgb(255, 255, 255);
@@ -27,16 +27,21 @@ header.scrolled{
     z-index: 9999;
 }
 
-.logga a{
+#logga a{
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
     color: black;
 }
-.logga h1{
+#logga h1{
     margin-left: 80px;
     font-size: 25px;
+    line-height: 20px;
+    text-align: center;
+}
+#h1_logga_mindre{
+    font-size: 18px;
 }
 .logo{
     width: 150px;
@@ -109,6 +114,9 @@ p{
     margin: 0 auto;
     gap: 100px;
 }
+.content h2{
+    padding-top: 0 !important;
+}
 .storbokstav{
     font-size: 60px;
 }
@@ -124,6 +132,10 @@ p{
 
 .kraftborsten:hover{
     border: 1px solid black;
+}
+.kraftborsten a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
 }
 
 .bild-wrap {
@@ -161,9 +173,18 @@ p{
 .kraftborsten:hover .normal {
   opacity: 0;
 }
-.pris{
+.pris-div{
     margin-left: 20px;
     font-size: 20px;
+}
+.blackweek{
+    position: absolute;
+    right: 0;
+    margin-right: 100px;
+}
+.blackweek img{
+    width: 100px;
+    height: 100px;
 }
 .pris-container{
     display: flex;
@@ -177,7 +198,7 @@ p{
 .addtocart{
     text-decoration: none;
     color: black;
-    background-color: rgb(192, 192, 57);
+    background-color: rgb(122, 192, 57);
     padding: 10px 15px;
     font-weight: bold;
     font-size: 15px;
@@ -185,14 +206,21 @@ p{
     margin-bottom: 20px;
     margin-top: 10px;
 }
+.addtocart:hover{
+    background-color: #b5d854;
+    cursor: pointer;
+}
 
 .kontaktknapp{
     color: black;
     text-decoration: none;
     background-color: white;
-    padding: 10px;
+    padding: 14px;
     border-radius: 5px;
     border: 1px solid black;
+}
+.content h3{
+    margin-bottom: 50px;
 }
 .kontaktknapp:hover{
     transform: scale(5);
@@ -217,7 +245,11 @@ p{
 }
 
 #badrum{
+    display: block;
     width: 550px;
+    box-shadow: 0px 0px 25px rgb(0, 0, 0);
+    border-radius: 5px;
+    z-index: 12;
 }
 #readmore{
     background-color: rgb(243, 216, 180);
@@ -238,6 +270,7 @@ p{
     text-decoration: none;
 }
 .info{
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -249,6 +282,19 @@ p{
     flex-direction: row;
     padding: 150px 80px 250px;
     gap: 100px;
+}
+.produkter-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.semer{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    border: 1px solid black;
+    padding: 5px 8px;
+    border-radius: 5px;
 }
 #fade{
     width: 850px;
@@ -295,19 +341,44 @@ footer::before {
   border-top: 30px solid rgb(250, 238, 224); /* Färgen på BAKGRUNDEN ovanför footern */
   z-index: 1;
 }
+.payment-icons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: -40px;
+    padding-top: 40px;
+}
 
+.payment-icons img {
+    height: 45px;    /* Ikonerna är redan kort-formade */
+    width: auto;
+    transition: transform 0.2s ease;
+    width: 40px;
+    height: auto;
+}
+
+.payment-icons img:hover {
+    transform: scale(1.08);
+}
+#swishicon{
+    height: 28px;
+    width: auto;
+}
 
 .fa-envelope, .fa-phone, .fa-location-dot{
     padding-right: 10px;
 }
 .fa-instagram{
     font-size: 70px;
-    color: #585f58;
+    color: #000000;
 }
-.fa-instagram:hover, .instagram-div h3:hover {
+.fa-instagram:hover, .instagram-div h3:hover, .instatagg:hover {
     transform: scale(1.2);
 }
 .instagram-div a{
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -317,7 +388,7 @@ footer::before {
     
 }
 .instagram-div{
-    background-color: rgb(245, 227, 207);
+    background-color: rgb(236, 208, 182);
     height: 400px;
     display: flex;
     justify-content: center;
@@ -385,9 +456,21 @@ footer::before {
 .boka:hover, .behandling-boka:hover{
     transform: scale(0.85);
 }
-.omoss-boka{
+.omoss-text{
     padding: 20px;
+    width: 80%;
     border: 1px solid #000;
+    border-radius: 5px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.omoss-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 30px;
 }
 .kontakt-boka{
     width: 125px;
@@ -623,79 +706,35 @@ body.cookie-blocked .cookie-settings {
     position: absolute;
 }
 
-.extra-div{
+.bildspel{
     display: flex;
     flex-direction: row;
-    gap: 50px;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
-    padding: 100px 0px 100px;
+    position: relative;
 }
-.extrah3{
-    font-size: 24px;
-    color: #000;
-}
-.extra-h3{
-    font-size: 30px;
-}
-#extra-fade-img{
-    width: 650px;
-    height: 650px;
-    object-fit: cover;
-}
-.extra-column1{
+.bildspel-div{
     display: flex;
-    flex-direction: column;
-    width: 40%;
-    min-width: 40%;
-    padding-left: 200px;
-    margin: 0 auto;
-}
-.extra-column2{
-    width: 50%;
-    display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
-.recensioner{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-.recensioner-titlar{
-    margin-top: 50px;
-}
-.recensioner-bubblor {
-  position: relative;
-  max-width: 500px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.bildspel {
-  position: relative;
-  width: 100%;
-  height: 250px;
-  padding-bottom: 100px;
-}
-
-.bildspel img{
+.bildspel-div img{
     width: 500px;
     height: auto;
+    margin: 50px;
 }
 
-.slide {
-  display: none;
-  width: 100%;
-}
-
-.slide.active {
-  display: block;
+.texten {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; 
+    font-size: 2rem; 
+    font-weight: bold;
+    text-shadow: 0 0 10px black;
 }
 
 .prev, .next {
@@ -805,3 +844,126 @@ input[type=text], select, textarea {
     align-items: center;
     padding: 150px 0;
   }
+
+
+
+.produkt-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 140px 20px 140px;
+    display: flex;
+    gap: 40px;
+}
+
+
+.produkt-bilder {
+    flex: 1;
+}
+
+
+.huvudbild-container {
+    width: 100%;
+    border: 2px solid #000;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    background: #fff;
+}
+
+
+.huvudbild {
+    max-width: 100%;
+    height: 400px;
+    object-fit: contain;
+}
+
+
+.mini-bilder {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+
+.mini-bilder img {
+    width: 80px;
+    height: 80px;
+    border: 2px solid #000;
+    cursor: pointer;
+    object-fit: contain;
+    background: #fff;
+}
+
+
+.produkt-info {
+    flex: 1;
+    border-right: 2px solid #000;
+    padding: 0 30px;
+}
+
+
+.produkt-info h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+
+.recensioner {
+    margin: 10px 0;
+    color: #ffaa00;
+    font-size: 17px;
+}
+
+
+.antal-valjare {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+
+.antal-valjare input {
+    width: 60px;
+    padding: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.oldprice{
+    color: grey;
+    text-decoration: line-through;
+    font-size: 18px;
+}
+.produktpris-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    color: red;
+}
+.newprice{
+    font-size: 20px;
+    color: red;
+}
+.color-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+.colorcircle{
+    display: inline-block;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+
+#beskrivning{
+    max-height: 120px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}

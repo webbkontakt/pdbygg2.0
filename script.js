@@ -195,10 +195,29 @@ function loadCart() {
   cart.forEach(item => {
     const row = document.createElement('tr');
 
-    // Bild
+    // Bild + papperskorg
     const imgCell = document.createElement('td');
+    const container = document.createElement('div');
+    container.style.display = 'flex';
+    container.style.alignItems = 'center';
+    container.style.gap = '10px'; // mellan ikon och bild
+
+    // Papperskorg-ikon
+    const deleteBtn = document.createElement('button');
+    deleteBtn.innerHTML = '🗑️';
+    deleteBtn.style.cursor = 'pointer';
+    deleteBtn.addEventListener('click', () => {
+        const index = cart.findIndex(i => i.name === item.name);
+        if (index > -1) {
+            cart.splice(index, 1);
+            setCart(cart);
+            loadCart();
+            updateCartCount();
+        }
+    });
+
+    // Produktbild
     const img = document.createElement('img');
-    const correctSrc = item.imageUrl.startsWith('bilder/') ? item.imageUrl : 'bilder/' + item.imageUrl;
     img.src = item.imageUrl || 'bilder/toaborste1.png';
     img.alt = item.name;
     img.style.width = '120px';
@@ -206,10 +225,10 @@ function loadCart() {
     img.style.objectFit = 'cover';
     img.style.borderRadius = '5px';
 
-    // 🟢 Här loggar vi vad src faktiskt blev
-    console.log("Bildens src som sätts:", img.src);
-
-    imgCell.appendChild(img);
+    // Lägg till i container: först papperskorg, sen bild
+    container.appendChild(deleteBtn);
+    container.appendChild(img);
+    imgCell.appendChild(container);
 
     // Namn
     const nameCell = document.createElement('td');
@@ -217,44 +236,34 @@ function loadCart() {
 
     // Antal
     const qtyCell = document.createElement('td');
+    const qtyContainer = document.createElement('div');
+    qtyContainer.className = 'qty-container';
 
-// container för knappar och display
-const qtyContainer = document.createElement('div');
-qtyContainer.className = 'qty-container';
+    const minusBtn = document.createElement('button');
+    minusBtn.className = 'qty-btn minus';
+    minusBtn.innerHTML = '<i class="fa-solid fa-minus"></i>';
+    const qtyDisplay = document.createElement('span');
+    qtyDisplay.className = 'qty-display';
+    qtyDisplay.textContent = item.quantity;
+    const plusBtn = document.createElement('button');
+    plusBtn.className = 'qty-btn plus';
+    plusBtn.innerHTML = '<i class="fa-solid fa-plus"></i>';
 
-// minus-knapp
-const minusBtn = document.createElement('button');
-minusBtn.className = 'qty-btn minus';
-minusBtn.innerHTML = '<i class="fa-solid fa-minus"></i>';
+    minusBtn.addEventListener('click', () => {
+        if (item.quantity > 1) {
+            item.quantity--;
+            setCart(cart);
+            loadCart();
+        }
+    });
+    plusBtn.addEventListener('click', () => {
+        item.quantity++;
+        setCart(cart);
+        loadCart();
+    });
 
-// antal-display
-const qtyDisplay = document.createElement('span');
-qtyDisplay.className = 'qty-display';
-qtyDisplay.textContent = item.quantity;
-
-// plus-knapp
-const plusBtn = document.createElement('button');
-plusBtn.className = 'qty-btn plus';
-plusBtn.innerHTML = '<i class="fa-solid fa-plus"></i>';
-
-// knapparnas funktionalitet
-minusBtn.addEventListener('click', () => {
-  if (item.quantity > 1) {
-    item.quantity--;
-    setCart(cart);
-    loadCart();
-  }
-});
-
-plusBtn.addEventListener('click', () => {
-  item.quantity++;
-  setCart(cart);
-  loadCart();
-});
-
-// lägg till i containern
-qtyContainer.append(minusBtn, qtyDisplay, plusBtn);
-qtyCell.appendChild(qtyContainer);
+    qtyContainer.append(minusBtn, qtyDisplay, plusBtn);
+    qtyCell.appendChild(qtyContainer);
 
     // Pris per styck
     const priceCell = document.createElement('td');
@@ -264,7 +273,6 @@ qtyCell.appendChild(qtyContainer);
     const totalCell = document.createElement('td');
     totalCell.textContent = `${item.price * item.quantity} kr`;
 
-    // Lägg till alla celler till raden
     row.appendChild(imgCell);
     row.appendChild(nameCell);
     row.appendChild(qtyCell);
@@ -274,7 +282,8 @@ qtyCell.appendChild(qtyContainer);
     tbody.appendChild(row);
 
     totalPrice += item.price * item.quantity;
-  });
+});
+
 
   totalElement.textContent = `Totalt: ${totalPrice} kr`;
 }
@@ -334,7 +343,7 @@ async function goToCheckout() {
         }
 
         // Skicka kundvagnen till backend för att skapa en Stripe Checkout-session
-        const response = await fetch("http://localhost:3000/create-checkout-session", {
+        const response = await fetch("http://pdbygg.se/create-checkout-session", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ items: cart })
@@ -387,4 +396,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+function toggleBeskrivning() {
+  const box = document.getElementById("beskrivning");
+  const button = document.querySelector(".visa-mer");
 
+  if (box.style.maxHeight === "500px") {
+    box.style.maxHeight = "120px";
+    button.textContent = "Visa mer";
+  } else {
+    box.style.maxHeight = "500px";
+    button.textContent = "Visa mindre";
+  }
+}
