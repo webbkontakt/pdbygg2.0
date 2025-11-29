@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
   customize.addEventListener('click', () => {
     banner.classList.remove('visible');
     settings.style.display = 'block';
