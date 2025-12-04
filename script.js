@@ -270,11 +270,12 @@ async function goToCheckout() {
             return;
         }
 
-        const response = await fetch("http://pdbygg.se/create-checkout-session", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ items: cart })
-        });
+        const response = await fetch("https://pdbygg2-0.onrender.com/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items: cart })
+    });
+
 
         const data = await response.json();
 
