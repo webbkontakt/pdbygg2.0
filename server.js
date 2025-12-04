@@ -29,8 +29,8 @@ app.post("/create-checkout-session", async (req, res) => {
         allowed_countries: ["SE"]
       },
       line_items: lineItems,
-      success_url: "https://www.pdbygg.se/success",
-      cancel_url: "https://www.pdbygg.se/cancel"
+      success_url: "https://www.pdbygg.se/success.html",
+      cancel_url: "https://www.pdbygg.se/index.html"
     });
 
     res.json({ url: session.url });
