@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function stangBanner() {
         overlay.style.display = 'none';
+        overlay.style.pointerEvents = 'none';
         banner.style.display = 'none';
         settings.style.display = 'none';
         document.body.classList.remove('cookie-blocked');
@@ -25,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!cookiesAccepted) {
         overlay.style.display = 'block';
+        overlay.style.pointerEvents = 'auto';
         banner.style.display = 'block';
         settings.style.display = 'none';
         document.body.classList.add('cookie-blocked');
@@ -58,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stangBanner();
     });
 });
+
 
 // ================== FADES ==================
 const fadeEls = document.querySelectorAll('.fade-in');
