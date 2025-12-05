@@ -487,6 +487,7 @@ footer::before {
 
 
 /* Grå overlay */
+/* COOKIE OVERLAY */
 #cookie-overlay {
   position: fixed;
   top: 0;
@@ -494,42 +495,28 @@ footer::before {
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.5);
-  z-index: 99999; /* högre än header, cart-panel, etc */
-  display: none;
+  z-index: 9999;
+  display: none; /* visas via JS */
+  pointer-events: auto; /* overlay är klickbar men popupen ligger ovanpå */
 }
 
+/* COOKIE BANNER */
 .cookie-banner {
   position: fixed;
-  bottom: 20px; /* längst ner */
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   background: white;
   padding: 1.5rem;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  z-index: 100000; /* högst */
+  z-index: 10000;
   text-align: center;
   max-width: 90%;
   border-radius: 10px;
-  pointer-events: auto;
+  pointer-events: auto; /* knapparna går klicka på */
 }
 
-.cookie-settings {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 2rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  z-index: 100001; /* ännu högre än banner */
-  text-align: center;
-  max-width: 90%;
-  border-radius: 10px;
-  pointer-events: auto;
-}
-
-.cookie-banner button,
-.cookie-settings button {
+.cookie-banner button {
   padding: 10px;
   border-radius: 15px;
   width: 200px;
@@ -540,11 +527,62 @@ footer::before {
 #accept-all {
   background-color: #b6e48b;
 }
+
 #accept-all:hover {
   background-color: #85d837;
 }
+
 #customize:hover {
   background-color: #bbbbbb;
+}
+
+/* COOKIE SETTINGS FÖNSTER */
+.cookie-settings {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 1.5rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  z-index: 10001;
+  text-align: center;
+  max-width: 90%;
+  border-radius: 10px;
+  pointer-events: auto;
+}
+
+.cookie-settings p {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.cookie-settings label {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#essential, #analytics, #marketing {
+  margin-right: 10px;
+  transform: scale(1.2); /* lättare att trycka på mobilen */
+}
+
+.cookie-settings button {
+  background-color: #b6e48b;
+  border-radius: 10px;
+  border: 1px solid #646363;
+  width: 150px;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.cookie-settings button:hover {
+  background-color: #93db4f;
 }
 
 /* Dölj element */
@@ -555,39 +593,6 @@ footer::before {
 /* Blockera scroll när popupen visas */
 body.cookie-blocked {
   overflow: hidden;
-}
-
-/* Checkbox-styling */
-#essential, #analytics, #marketing {
-  font-size: 20px;
-}
-
-.cookie-settings label {
-  font-size: 20px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 0 auto 10px auto;
-}
-
-.cookie-settings p {
-  font-size: 22px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-.cookie-settings button {
-  background-color: #b6e48b;
-  border-radius: 10px;
-  border-color: #646363;
-  width: 150px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 14px;
-  text-transform: uppercase;
-}
-
-.cookie-settings button:hover {
-  background-color: #93db4f;
 }
 
 
