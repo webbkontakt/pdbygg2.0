@@ -497,7 +497,7 @@ footer::before {
   background: rgba(0,0,0,0.5);
   z-index: 9999;
   display: none; /* visas via JS */
-  pointer-events: auto; /* overlay är klickbar men popupen ligger ovanpå */
+  pointer-events: none;
 }
 
 /* COOKIE BANNER */
