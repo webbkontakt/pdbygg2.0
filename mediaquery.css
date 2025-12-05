@@ -1,0 +1,296 @@
+/* MEDIA QUERY FÖR SKÄRMAR <= 1024px */
+@media screen and (max-width: 1024px) {
+
+    /* Header layout */
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        height: 60px;
+    }
+
+    /* Hamburgermenyknappen */
+    .mobilmeny {
+        display: block;
+        position: relative; /* Ligger till vänster */
+        z-index: 10000;
+    }
+
+    /* Hamburgermeny med animation */
+    #meny {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* börjar uppifrån */
+    position: fixed;
+    top: 0;
+    left: 0;           /* viktig för att den ska börja från vänster */
+    width: 100%;       /* full bredd */
+    max-height: 300px; /* anpassa höjden efter innehåll */
+    background-color: white;
+    padding-top: 60px; /* för headern */
+    gap: 20px;
+    z-index: 9999;
+    visibility: hidden;
+    box-sizing: border-box; /* gör att padding inte gör den bredare än 100% */
+}
+#meny.show {
+    visibility: visible;
+}
+
+
+
+#meny ul {
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    text-align: center;
+}
+.content
+#meny a {
+    width: 100%;
+    padding: 15px 0;
+}
+
+
+    #meny ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #meny a {
+        text-align: center;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    /* Kundvagnsikon */
+    .cart-icon {
+        position: relative;
+        top: 0;
+        transform: none;
+        margin-left: auto;
+    }
+
+    /* Logga */
+    #logga {
+        margin-left: 20px;
+    }
+
+    #logga h1 {
+        font-size: 22px;
+        line-height: 25px;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    #h1_logga_mindre {
+        font-size: 14px;
+    }
+
+    /* Hero-sektion */
+    .welcome .content {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+    .welcome{
+        min-width: 100%;
+    }
+
+    #badrum {
+        width: 90%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .storbokstav {
+        font-size: 40px;
+    }
+
+    h2 {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .kontaktknapp {
+        width: 80%;
+        text-align: center;
+        padding: 10px;
+        font-size: 14px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Produkter */
+    .info {
+        flex-direction: column;
+        gap: 30px;
+        padding: 20px;
+        align-items: center;
+    }
+
+    .kraftborsten {
+        width: 90%;
+        max-width: 300px;
+        height: auto;
+    }
+
+    .kraftborsten .bild-wrap {
+        width: 100%;
+        height: 250px;
+    }
+
+    .blackweek {
+        margin-right: 20px;
+        top: 10px;
+        right: 10px;
+    }
+
+    /* Instagram */
+    .instagram-div {
+        height: auto;
+        padding: 40px 20px;
+    }
+
+    .instagram-div h3 {
+        font-size: 24px;
+    }
+
+    .fa-instagram {
+        font-size: 50px;
+    }
+
+    /* Bildspel */
+    .bildspel {
+        flex-direction: column;
+    }
+
+    .bildspel-div img {
+        width: 80%;
+        max-width: 400px;
+        margin: 20px 0;
+    }
+
+    .texten {
+        font-size: 1.5rem;
+    }
+
+    /* Footer */
+    .footer-column1, .footer-column2 {
+        padding: 20px;
+    }
+
+    .meny-footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .payment-icons {
+        gap: 10px;
+    }
+
+    /* Om oss */
+    .omoss-content {
+        flex-direction: column;
+        padding: 50px 20px;
+        gap: 20px;
+    }
+
+    .omoss-content img {
+        width: 90%;
+        max-width: 400px;
+        margin-right: 0;
+    }
+
+    .text-container {
+        max-width: 100%;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    /* Kontakt */
+    .kontakt-content {
+        flex-direction: column;
+        padding: 50px 20px;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .kontakt-content img {
+        width: 90%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .kontakt {
+        max-width: 90%;
+    }
+
+    /* Behandlingar */
+    .behandlingar-content {
+        padding: 50px 20px;
+        gap: 20px;
+    }
+
+    .behandling-kolumner, .big-column {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Cart-panel */
+    #cart-panel {
+        right: 20px;
+        top: 60px;
+        width: 80%;
+        max-width: 300px;
+    }
+
+}
+
+@media screen and (max-width: 650px) {
+    .blackweek{
+        visibility: hidden;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .welcome,
+    .info,
+    .omoss-content,
+    .kontakt-content,
+    .bildspel-div,
+    .kraftborsten {
+        width: 100%;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 10px;
+        padding-right: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* centrerar innehållet */
+    }
+
+    #badrum,
+    .kraftborsten .bild-wrap img,
+    .omoss-content img,
+    .kontakt-content img,
+    .bildspel-div img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .kontaktknapp {
+        width: 100%;
+    }
+}

@@ -493,13 +493,26 @@ footer::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5); /* t.ex. halvtransparent */
-  z-index: 9999;
-  display: none; /* default hidden */
+  background: rgba(0,0,0,0.5);
+  z-index: 99999; /* högre än header, cart-panel, etc */
+  display: none;
 }
 
-/* Cookie-popup & inställningar */
-.cookie-banner,
+.cookie-banner {
+  position: fixed;
+  bottom: 20px; /* längst ner */
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 1.5rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  z-index: 100000; /* högst */
+  text-align: center;
+  max-width: 90%;
+  border-radius: 10px;
+  pointer-events: auto;
+}
+
 .cookie-settings {
   position: fixed;
   top: 50%;
@@ -508,13 +521,15 @@ footer::before {
   background: white;
   padding: 2rem;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  z-index: 9998;
+  z-index: 100001; /* ännu högre än banner */
   text-align: center;
   max-width: 90%;
   border-radius: 10px;
+  pointer-events: auto;
 }
 
-.cookie-banner button{
+.cookie-banner button,
+.cookie-settings button {
   padding: 10px;
   border-radius: 15px;
   width: 200px;
@@ -537,15 +552,9 @@ footer::before {
   display: none;
 }
 
-/* Blockera scroll men låt popupen vara klickbar */
+/* Blockera scroll när popupen visas */
 body.cookie-blocked {
   overflow: hidden;
-}
-
-.cookie-banner,
-.cookie-settings,
-#cookie-overlay {
-  pointer-events: auto;
 }
 
 /* Checkbox-styling */
@@ -568,7 +577,6 @@ body.cookie-blocked {
 }
 
 .cookie-settings button {
-  padding: 10px;
   background-color: #b6e48b;
   border-radius: 10px;
   border-color: #646363;
@@ -576,12 +584,12 @@ body.cookie-blocked {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 14px;
   text-transform: uppercase;
-  cursor: pointer;
 }
 
 .cookie-settings button:hover {
   background-color: #93db4f;
 }
+
 
 .omoss-content{
     width: 100%;

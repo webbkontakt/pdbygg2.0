@@ -102,8 +102,17 @@ function changeSlide(direction) {
 
 // ================== MENY ==================
 function toggleMeny() {
-    document.getElementById("meny")?.classList.toggle("visad");
+    const meny = document.getElementById("meny");
+    meny.classList.toggle("show");
 }
+
+// Stäng menyn om man klickar på en länk
+document.querySelectorAll("#meny a").forEach(link => {
+    link.addEventListener("click", () => {
+        document.getElementById("meny").classList.remove("show");
+    });
+});
+
 
 window.addEventListener('scroll', () => {
     const meny = document.getElementById('meny');
