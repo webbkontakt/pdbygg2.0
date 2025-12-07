@@ -146,3 +146,52 @@ th {
     text-decoration: line-through;
     color: grey;
 }
+
+
+/* Mobilstil för kundvagn (max 650px) */
+@media screen and (max-width: 650px) {
+
+    .kundvagn-container {
+        width: 95%;
+        margin: 0 auto;
+        padding: 10px;
+    }
+
+    table, #cart-items {
+        width: 100%;
+        display: block;
+        overflow-x: auto; /* gör att tabellen scrollar horisontellt om den blir för bred */
+    }
+
+    #cart-items th,
+    #cart-items td {
+        padding: 6px;
+        font-size: 14px;
+        word-break: break-word;
+    }
+
+    #cart-items img {
+        width: 60px;
+        height: 45px;
+    }
+
+    .qty-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+
+    .qty-display {
+        font-size: 15px;
+    }
+
+    .proceed {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    .continue {
+        width: 60%;
+        max-width: 200px;
+    }
+}
