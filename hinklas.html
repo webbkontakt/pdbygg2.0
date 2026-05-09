@@ -19,7 +19,7 @@
         </div>
         <div id="logga">
             <a href="index.html">
-                <h1>PD Bygg<br><span id="h1_logga_mindre">Jönköping</span></h1>
+                <img id="logo" src="PDBygglogo.png" alt="pdbygglogo">
             </a>
         </div>
         <div id="meny">
@@ -34,21 +34,10 @@
             </nav>
         </div>
 
-        <div class="cart-icon">
-            <a href="cart.html">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span id="cart-count">0</span>
-            </a>
+        <div class="cart-icon" id="toggle-cart" style="cursor: pointer;">
+            <i class="fa-solid fa-cart-shopping"></i>
         </div>
-
-        <div id="cart-panel" class="cart-panel hidden">
-            <h3>🛒 Din kundvagn</h3>
-            <div id="cart-items"></div>
-            <div class="cart-footer">
-                <p id="cart-total">Totalt: 0 kr</p>
-                <button id="clear-cart">Töm kundvagn</button>
-            </div>
-        </div>
+        
     </header>
 
     <div class="produkt-container">
@@ -74,20 +63,11 @@
             <div class="recensioner">
             ★★★★☆ (114 recensioner)
             </div>
-
-
-            <div class="antal-valjare">
-            <label>Antal:</label>
-            <input type="number" id="antal" value="1" min="1">
-            </div>
             <div class="color-div">
                 <p>Color:</p>
                 <span class="colorcircle"></span>
             </div>
-
-            <div class="laggtill-div">
-                <button onclick="handleAddToCart(this, 'Hinklåset', 499, 'bilder/hink1.png', 'price_1SSn9gCZNxjGcm7PbWQfKafg')" class="addtocart">Lägg till i kundvagnen</button>
-            </div>
+            <div id='product-component-1778259314915'></div>
             
 
 
@@ -100,9 +80,6 @@
             Texten är extra lång så du kan klicka på Visa mer och känna dig som en äventyrare.
             </p>
             </div>
-
-
-            <div class="visa-mer" onclick="toggleBeskrivning()">Visa mer</div>
             </div>
         </div>
 

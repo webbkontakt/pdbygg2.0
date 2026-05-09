@@ -6,7 +6,6 @@
     <title>PD Bygg Jonkoping</title>
     <link rel="stylesheet" href="stilmall.css">
     <link rel="stylesheet" href="mediaquery.css">
-    <link rel="stylesheet" href="cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
@@ -19,7 +18,7 @@
         </div>
         <div id="logga">
             <a href="index.html">
-                <h1>PD Bygg<br><span id="h1_logga_mindre">Jönköping</span></h1>
+                <img id="logo" src="PDBygglogo.png" alt="pdbygglogo">
             </a>
         </div>
         <div id="meny">
@@ -34,21 +33,10 @@
             </nav>
         </div>
 
-        <div class="cart-icon">
-            <a href="cart.html">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span id="cart-count">0</span>
-            </a>
+        <div class="cart-icon" id="toggle-cart" style="cursor: pointer;">
+            <i class="fa-solid fa-cart-shopping"></i>
         </div>
-
-        <div id="cart-panel" class="cart-panel hidden">
-            <h3>🛒 Din kundvagn</h3>
-            <div id="cart-items"></div>
-            <div class="cart-footer">
-                <p id="cart-total">Totalt: 0 kr</p>
-                <button id="clear-cart">Töm kundvagn</button>
-            </div>
-        </div>
+        
     </header>
 
     <div class="container">
@@ -72,14 +60,14 @@
                     <img src="bilder/toaborste2.png" class="hover-img">
                 </div>
                 <p class="product-name">Kraftborste</p>
-                <p>för alla skruvdragare</p>
+                <p>Passar alla skruvdragare</p>
                 </a>
                 <div class="pris-container">
-                    <div class="pris-div">
-                        <p class="newprice">299:-</p>
-                    </div>
-                    <button onclick="handleAddToCart(this, 'Kraftborsten', 299, 'bilder/toaborste1.png', 'price_1SSmtYCZNxjGcm7PegepWJlt')" class="addtocart">KÖP</button>
+                <div class="pris-div">
+                    <p class="newprice">299,00 SEK</p>
                 </div>
+                <div id='product-component-1778246133497'></div>
+            </div>
             </div>
 
             <div class="kraftborsten" data-name="Hinklåset" data-price="500">
@@ -89,33 +77,27 @@
                     <img src="bilder/hink2.png" class="hover-img">
                 </div>
                 <p class="product-name">Hinklås</p>
-                <p>för hinkar med <br>omkrets 30-50cm</p>
+                <p>Justerbar Ø30-50 cm</p>
                 </a>
                 <div class="pris-container">
                     <div class="pris-div">
-                        <p class="newprice">379:-</p>
+                        <p class="newprice">379,00 SEK</p>
                     </div>
-                    <button onclick="handleAddToCart(this, 'Hinklåset', 499, 'bilder/hink1.png', 'price_1SSn9gCZNxjGcm7PbWQfKafg')" class="addtocart">KÖP</button>
+                    <div id='product-component-1778259314915'></div>                
                 </div>    
                 
                 
             </div>
             <div class="blackweek">
-                <img src="icons/sale.svg">
+                <img src="icons/sale.svg" style="display: none;">
             </div>
         </div>
 
-        <div class="instagram-div">
-            <a href="https://www.instagram.com/pdbygg/?hl=en">
-                <h3>Följ oss på Instagram</h3>
-                <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://www.instagram.com/pdbygg/?hl=en" class="instatagg">@pdbyggab</a>
-        </div>
+        
 
         <div class="bildspel">
             <div class="bildspel-div">
-                <a href="produkter.html"><img src="bilder/produkt.jpg" style="width: 500px; height: 500px;">
+                <a href="produkter.html"><img src="bilder/produkt.jpg">
                 <div class="texten">PRODUKTER</div></a>
             </div>
             <div class="bildspel-div">
@@ -128,6 +110,14 @@
             </div>
         </div>
 
+        <div class="instagram-div">
+            <a href="https://www.instagram.com/pdbygg/?hl=en">
+                <h3>Följ oss på Instagram</h3>
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.instagram.com/pdbygg/?hl=en" class="instatagg">@pdbyggab</a>
+        </div>
+
     <footer>
         <div class="footer-content">
             <div class="meny-footer">
@@ -136,7 +126,7 @@
                     <ul>
                         <li><a href=""><i class="fa-solid fa-phone"></i>+46762082095</a></li>
                         <li><a href=""><i class="fa-solid fa-envelope"></i>pdbyggab@hotmail.com</a></li>
-                        <a href="arbete.html" class="bestallarbeteknapp">BESTÄLL ARBETE</a>
+                        <a href="arbete.html" class="kontaktknapp">BESTÄLL ARBETE</a>
                     </ul>
                 </div>
                 <div class="footer-column2">

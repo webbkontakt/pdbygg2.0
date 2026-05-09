@@ -6,7 +6,6 @@
     <title>PD Bygg Jonkoping</title>
     <link rel="stylesheet" href="stilmall.css">
     <link rel="stylesheet" href="mediaquery.css">
-    <link rel="stylesheet" href="cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
@@ -19,7 +18,7 @@
         </div>
         <div id="logga">
             <a href="index.html">
-                <h1>PD Bygg<br><span id="h1_logga_mindre">Jönköping</span></h1>
+                <img id="logo" src="PDBygglogo.png" alt="pdbygglogo">
             </a>
         </div>
         <div id="meny">
@@ -34,21 +33,10 @@
             </nav>
         </div>
 
-        <div class="cart-icon">
-            <a href="cart.html">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span id="cart-count">0</span>
-            </a>
+        <div class="cart-icon" id="toggle-cart" style="cursor: pointer;">
+            <i class="fa-solid fa-cart-shopping"></i>
         </div>
-
-        <div id="cart-panel" class="cart-panel hidden">
-            <h3>🛒 Din kundvagn</h3>
-            <div id="cart-items"></div>
-            <div class="cart-footer">
-                <p id="cart-total">Totalt: 0 kr</p>
-                <button id="clear-cart">Töm kundvagn</button>
-            </div>
-        </div>
+        
     </header>
 
     <div class="produkt-container">
@@ -75,19 +63,13 @@
             <div class="recensioner">
             ★★★★☆ (114 recensioner)
             </div>
-
-
-            <div class="antal-valjare">
-            <label>Antal:</label>
-            <input type="number" id="antal" value="1" min="1">
-            </div>
             <div class="color-div">
                 <p>Color:</p>
                 <span class="colorcircle"></span>
             </div>
 
             <div class="laggtill-div">
-                <button onclick="handleAddToCart(this, 'Kraftborsten', 299, 'bilder/toaborste1.png')" class="addtocart">Lägg till i kundvagnen</button>
+                <div id='product-component-1778246133497'></div>
             </div>
             
 
@@ -104,9 +86,6 @@
             Texten är extra lång så du kan klicka på Visa mer och känna dig som en äventyrare.
             </p>
             </div>
-
-
-            <div class="visa-mer" onclick="toggleBeskrivning()">Visa mer</div>
             </div>
         </div>
 

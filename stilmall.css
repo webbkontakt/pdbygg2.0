@@ -6,6 +6,12 @@ html, body{
     padding: 0;
     font-family: 'Inter', sans-serif;
     letter-spacing: -.2px;
+    background-image: url(woody.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    filter: contrast(105%);
 }
 
 .mobilmeny{
@@ -18,13 +24,14 @@ header{
     display: flex;
     align-items: center;
     flex-direction: row;
-    background-color: white;
-    z-index: 9999;
+    background-color: transparent;
+    z-index: 10999;
 }
 header.scrolled{
     background-color: rgb(255, 255, 255);
     border-bottom: 1px solid rgb(173, 173, 173);
-    z-index: 9999;
+    position: fixed !important;
+    z-index: 9999999;
 }
 
 #logga a{
@@ -32,16 +39,11 @@ header.scrolled{
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    color: black;
+    color: rgb(255, 255, 255);
 }
-#logga h1{
-    margin-left: 80px;
-    font-size: 25px;
-    line-height: 20px;
-    text-align: center;
-}
-#h1_logga_mindre{
-    font-size: 18px;
+#logga img{
+    height: 250px;
+    margin-left: 20px;
 }
 .logo{
     width: 150px;
@@ -89,11 +91,13 @@ p{
     padding: 10px;
     list-style-type: none;
     text-decoration: none;
-    color: black;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    transition: background-color 0.3s ease;
 }
 #meny a:hover{
-    background-color: rgb(247, 216, 192);
-    border-radius: 5px;
+    color: rgb(49, 36, 18);
+    background-color: white !important;
 }
 #meny a.active{
     border-bottom: 1px solid black;
@@ -102,9 +106,11 @@ p{
     width: 100%;
     height: auto;
     padding: 150px 0px 80px;
-    background-color: rgb(236, 208, 182);
     z-index: 5;
-
+}
+.welcome h2 , h3{
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 .content{
     display: flex;
@@ -113,6 +119,7 @@ p{
     align-items: center;
     margin: 0 auto;
     gap: 100px;
+    color: white; 
 }
 .content h2{
     padding-top: 0 !important;
@@ -126,7 +133,7 @@ p{
   border: 1px solid rgb(163, 163, 163);
   align-items: center;
   position: relative;
-  height: 420px;
+  height: 460px;
   border-radius: 5px;
 }
 
@@ -174,7 +181,6 @@ p{
   opacity: 0;
 }
 .pris-div{
-    margin-left: 20px;
     font-size: 20px;
 }
 .blackweek{
@@ -186,49 +192,57 @@ p{
     width: 100px;
     height: 100px;
 }
-.pris-container{
+.pris-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    position: absolute;
-    bottom: 0;
+    flex-direction: column;
+    align-items: center;
+    bottom: 20px;
     left: 0;
     width: 100%;
+    gap: 0px;
 }
-.addtocart{
-    text-decoration: none;
-    color: black;
-    border: none;
-    border-radius: 5px;
-    background-color: rgb(122, 192, 57);
-    padding: 10px 15px;
+.product-name{
     font-weight: bold;
-    font-size: 15px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    margin-top: 10px;
+    font-size: 18px;
 }
-.addtocart:hover{
-    background-color: #b5d854;
-    cursor: pointer;
+
+.pris-container .pris-div {
+    margin-bottom: 0px !important; /* Tar bort luft under priset */
+}
+
+.pris-container .pris-div p {
+    margin-bottom: 5px !important; /* Ger bara ett litet mellanrum */
+}
+
+.pris-container #product-component-1778246133497, #product-component-1778259314915{
+    width: 120px !important;
+    height: 40px !important;
+    margin-top: -5px !important; /* NEGATIVT värde drar knappen UPPÅT mot priset */
+    overflow: visible !important;
+}
+
+.pris-container #product-component-1778246133497 iframe, #product-component-1778259314915 iframe{
+    height: 60px !important; /* Vi sänkte denna från 60px för att minska tomrummet */
+    margin-top: -5px !important; 
+    width: 100% !important;
 }
 
 .kontaktknapp{
-    color: black;
+    color: white;
     text-decoration: none;
-    background-color: white;
     padding: 14px;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px solid white;
+    background: transparent;
 }
 .content h3{
     margin-bottom: 50px;
 }
 .kontaktknapp:hover{
-    transform: scale(5);
-    background-color: rgb(0, 0, 0);
-    color: white;
-    border: 1px solid rgb(255, 255, 255);
+    transform: scale(1.05);
+    background-color: white;
+    color: black;
+    border: 1px solid rgb(0, 0, 0);
 }
 
 .welcome-meny{
@@ -253,10 +267,6 @@ p{
     border-radius: 5px;
     z-index: 12;
 }
-#readmore{
-    background-color: rgb(243, 216, 180);
-    border: 1px solid rgb(243, 216, 180);
-}
 .kontakt-lista{
     display: flex;
     flex-direction: column;
@@ -277,6 +287,7 @@ p{
     flex-direction: row;
     justify-content: center;
     padding: 50px;
+    background-color: white;
     gap: 150px;
 }
 .produkter{
@@ -290,14 +301,14 @@ p{
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    background-color: white;
+    border-radius: 15px;
 }
-.semer{
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    border: 1px solid black;
-    padding: 5px 8px;
-    border-radius: 5px;
+
+.produkter-div .kraftborsten{
+    border-radius: 15px;
 }
+
 #fade{
     width: 850px;
     height: auto;
@@ -310,9 +321,9 @@ p{
 }
 footer{
     position: relative;
-    border-top: 4px solid #585f58;
+    border-top: 4px solid #3f2312;
     width: 100%;
-    background-color: #494949;
+    background-color: #3f2312;
     color: white;
     padding: 40px 0px;
 }
@@ -374,7 +385,7 @@ footer::before {
 }
 .fa-instagram{
     font-size: 70px;
-    color: #000000;
+    color: rgb(73, 31, 4);
 }
 .fa-instagram:hover, .instagram-div h3:hover, .instatagg:hover {
     transform: scale(1.2);
@@ -391,19 +402,20 @@ footer::before {
     
 }
 .instagram-div{
-    background-color: rgb(236, 208, 182);
-    height: 400px;
+    background-color: rgb(255, 255, 255);
+    height: 300px;
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
 .instatagg{
-    color: black;
+    color: rgb(73, 31, 4);
     margin-top: 20px;
 }
 
 .instagram-div h3{
     font-size: 30px;
+    color: rgb(73, 31, 4);
 }
 .meny-footer{
     display: flex;
@@ -422,6 +434,7 @@ footer::before {
 .footer-column2{
     padding-right: 200px;
 }
+
 .footer-column1 ul{
     display: flex;
     flex-direction: column;
@@ -447,6 +460,9 @@ footer::before {
     color: white;
     text-decoration: none;
     list-style-type: none;
+}
+.meny-footer li:hover{
+    scale: calc(1.1);
 }
 .footer-column1 h4, .footer-column2 h4{
     font-size: 20px;
@@ -688,19 +704,19 @@ body.cookie-blocked { overflow: hidden; }
     bottom: 0;
     display: flex;
     bottom: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-bottom: 5px;
+    right: 5px;
+    padding-bottom: 5px;
     position: absolute;
     margin: 0 auto;
     font-size: 14px;
 }
 .reklam{
-    font-size: 12px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
     bottom: 0;
     left: 5px;
     position: absolute;
+    margin: 0 auto;
+    padding-bottom: 5px;
 }
 
 .bildspel{
@@ -721,7 +737,7 @@ body.cookie-blocked { overflow: hidden; }
 }
 .bildspel-div img{
     width: 500px;
-    height: auto;
+    height: 500px;
     margin: 50px;
     display: block;
 }
@@ -740,31 +756,72 @@ body.cookie-blocked { overflow: hidden; }
     text-shadow: 0 0 10px black;
 }
 
-/* CART */
-
-.cart-icon {
-  position: absolute;
-  right: 40px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
 
 .cart-icon i {
-  font-size: 22px;
-  color: black;
+    font-size: 22px;
+    color: white; /* Vi gör den vit som standard för din transparenta header */
+    transition: color 0.3s;
 }
 
-#cart-count {
-  position: absolute;
-  top: -8px;
-  right: -10px;
-  background-color: red;
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 2px 6px;
-  border-radius: 50%;
+.shopify-buy__cart-toggle {
+    display: none !important;
+}
+
+
+/* När headern blir vit vid scroll, gör ikonen svart så den syns */
+header.scrolled .cart-icon i {
+    color: black;
+}
+/* Gör kundvagnens innehåll skrollbart men behåll toppen och botten fasta */
+.shopify-buy__cart-items-wrapper {
+    flex-grow: 1;
+    overflow-y: auto; /* Endast varorna skrollar */
+}
+
+/* Denna styr själva behållaren som Shopify skapar dynamiskt */
+.shopify-buy-frame--cart {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: auto !important; /* Säkerställ att den inte sträcks ut från vänster */
+    height: 100vh !important;
+    width: 400px !important; /* Eller den bredd din vagn har */
+    z-index: 2147483647 !important; /* Max värde för z-index för att ligga över ALLT */
+}
+
+/* Tvinga innehållet inuti att också hålla höjden */
+.shopify-buy-frame--cart iframe {
+    height: 100% !important;
+    width: 100% !important;
+    position: absolute !important;
+    top: 0 !important;
+}
+
+/* Denna ser till att du kan klicka inuti vagnen när den faktiskt visas */
+.shopify-buy-frame--cart.is-visible {
+    pointer-events: all;
+}
+
+/* Om din egen ikon också försvinner när du skrollar, gör den fast också */
+.cart-icon {
+    position: fixed; /* Byt från absolute till fixed */
+    top: 20px;       /* Justera så den hamnar snyggt i din header */
+    right: 20px;
+    z-index: 20001 !important;
+}
+
+/* Försök tvinga innehållet inuti iframen att bete sig som en flexbox */
+/* (Detta fungerar ibland beroende på hur webbläsaren tolkar iframen) */
+.shopify-buy__cart {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.shopify-buy__cart-footer {
+    margin-top: auto !important; /* Trycker ner footern till botten */
+    position: relative !important;
+    background: #fff !important;
 }
 
 
@@ -880,6 +937,8 @@ input[type=text], select, textarea {
     flex: 1;
     border-right: 2px solid #000;
     padding: 0 30px;
+    background-color: white;
+    border: 2px solid black;
 }
 
 
@@ -921,11 +980,11 @@ input[type=text], select, textarea {
     flex-direction: row;
     align-items: center;
     gap: 10px;
-    color: red;
+    color: rgb(0, 0, 0);
 }
 .newprice{
     font-size: 18px;
-    color: red;
+    color: rgb(0, 0, 0);
 }
 .color-div{
     display: flex;
@@ -942,10 +1001,11 @@ input[type=text], select, textarea {
     height: 20px;
 }
 
-#beskrivning{
+#beskrivning h3, #beskriving p{
     max-height: 120px;
     overflow: hidden;
     transition: max-height 0.3s ease;
+    color: black;
 }
 
 .tack-container{

@@ -1,4 +1,6 @@
-/* MEDIA QUERY FÖR SKÄRMAR <= 1024px */
+/* ==========================================
+   MEDIA QUERY FÖR SKÄRMAR <= 1024px
+   ========================================== */
 @media screen and (max-width: 1024px) {
 
     /* Header layout */
@@ -9,64 +11,64 @@
         padding: 10px 20px;
         height: 60px;
     }
+    #logga {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 50%;
+        margin-left: 20px;
+    }
 
     /* Hamburgermenyknappen */
     .mobilmeny {
         display: block;
-        position: relative; /* Ligger till vänster */
+        position: relative;
         z-index: 10000;
+    }
+    #meny-knapp i{
+        padding: 10px;
     }
 
     /* Hamburgermeny med animation */
     #meny {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; /* börjar uppifrån */
-    position: fixed;
-    top: 0;
-    left: 0;           /* viktig för att den ska börja från vänster */
-    width: 100%;       /* full bredd */
-    max-height: 300px; /* anpassa höjden efter innehåll */
-    background-color: white;
-    padding-top: 60px; /* för headern */
-    gap: 20px;
-    z-index: 9999;
-    visibility: hidden;
-    box-sizing: border-box; /* gör att padding inte gör den bredare än 100% */
-}
-#meny.show {
-    visibility: visible;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        max-height: 300px;
+        background-color: rgb(255, 255, 255);
+        gap: 20px;
+        z-index: 9999;
+        visibility: hidden;
+        box-sizing: border-box;
+    }
 
-
-
-#meny ul {
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-    text-align: center;
-}
-.content
-#meny a {
-    width: 100%;
-    padding: 15px 0;
-}
-
+    #meny.show {
+        visibility: visible;
+        width: 100%;
+        margin: 0;
+        display: flex;
+    }
 
     #meny ul {
         flex-direction: column;
-        gap: 10px;
+        gap: 15px;
+        width: 100%;
+        text-align: center;
+        padding: 0;
+        list-style: none;
     }
 
     #meny a {
-        text-align: center;
+        display: block;
         width: 100%;
         padding: 10px 0;
+        text-align: center;
+        color: black;
     }
 
     /* Kundvagnsikon */
@@ -77,34 +79,33 @@
         margin-left: auto;
     }
 
-    /* Logga */
-    #logga {
-        margin-left: 20px;
-    }
-
     #logga h1 {
-        font-size: 22px;
+        font-size: 20px;
         line-height: 25px;
         margin-left: 0;
         text-align: center;
     }
 
     #h1_logga_mindre {
-        font-size: 14px;
+        font-size: 13px;
     }
 
-    /* Hero-sektion */
+    /* Hero-sektion / Welcome */
+    .welcome {
+        min-width: 100%;
+        padding-top: 80px;
+    }
+
     .welcome .content {
         flex-direction: column;
         gap: 20px;
         padding: 20px;
-    }
-    .welcome{
-        min-width: 100%;
+        align-items: center;
     }
 
     #badrum {
         width: 90%;
+        max-width: 500px;
         height: auto;
         margin: 0 auto;
     }
@@ -125,43 +126,63 @@
 
     .kontaktknapp {
         width: 80%;
+        max-width: 300px;
         text-align: center;
-        padding: 10px;
+        padding: 12px;
         font-size: 14px;
-        align-items: center;
         display: flex;
         justify-content: center;
+        align-items: center;
     }
 
-    /* Produkter */
+    /* PRODUKTER - Fixar kompressionen och knappen */
     .info {
-        flex-direction: column;
-        gap: 30px;
-        padding: 20px;
+        display: flex;
+        flex-direction: column; 
+        gap: 50px;
+        padding: 40px 20px;
         align-items: center;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .kraftborsten {
-        width: 90%;
-        max-width: 300px;
-        height: auto;
+        width: 100%;
+        max-width: 320px; 
+        height: auto; /* Låter objektet växa efter innehåll */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 25px; /* Ger plats åt KÖP-knappen i botten */
+        box-sizing: border-box;
     }
 
     .kraftborsten .bild-wrap {
-        width: 100%;
-        height: 250px;
+        width: 90%; /* Gör bilden något mindre för att ge luft */
+        aspect-ratio: 1 / 1; 
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        margin-bottom: 10px;
     }
 
-    .blackweek {
-        margin-right: 20px;
-        top: 10px;
-        right: 10px;
+    .kraftborsten .bild-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .kraftborsten p {
+        margin: 10px 0;
+        height: auto;
+        text-align: center;
     }
 
     /* Instagram */
     .instagram-div {
         height: auto;
         padding: 40px 20px;
+        text-align: center;
     }
 
     .instagram-div h3 {
@@ -172,129 +193,133 @@
         font-size: 50px;
     }
 
-    /* Bildspel */
+    /* Bildspel - Centrerat */
     .bildspel {
+        display: flex;
         flex-direction: column;
+        align-items: center; 
+        justify-content: center;
+        width: 100%;
+    }
+
+    .bildspel-div {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        text-align: center;
+        padding: 0;
     }
 
     .bildspel-div img {
-        width: 80%;
+        width: 90%;
         max-width: 400px;
-        margin: 20px 0;
+        height: 300px; 
+        object-fit: cover;
+        margin: 20px auto; 
+        border-radius: 10px;
+        display: block;
     }
 
-    .texten {
-        font-size: 1.5rem;
+    /* Om oss & Kontakt */
+    .omoss-content, .kontakt-content {
+        flex-direction: column;
+        padding: 40px 20px;
+        gap: 30px;
+        align-items: center;
     }
 
-    /* Footer */
-    .footer-column1, .footer-column2 {
-        padding: 20px;
+    .omoss-content img, .kontakt-content img {
+        width: 100%;
+        max-width: 350px;
+        margin: 0;
     }
 
+    .text-container, .kontakt {
+        max-width: 100%;
+        width: 90%;
+        text-align: center;
+    }
+
+    /* Footer - Fullständig centrering */
     .meny-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        justify-content: center;
+        gap: 30px;
+        text-align: center; 
+        width: 100%;
+    }
+
+    .footer-column1, .footer-column2 {
+        width: 100%;
+        padding: 10px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        text-align: center;
+    }
+
+    .footer-column1 ul, .footer-column2 ul {
+        padding: 0;
+        list-style: none;
+        display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 30px;
     }
 
     .payment-icons {
-        gap: 10px;
-    }
-
-    /* Om oss */
-    .omoss-content {
-        flex-direction: column;
-        padding: 50px 20px;
-        gap: 20px;
-    }
-
-    .omoss-content img {
-        width: 90%;
-        max-width: 400px;
-        margin-right: 0;
-    }
-
-    .text-container {
-        max-width: 100%;
-        width: 90%;
-        margin: 0 auto;
-    }
-
-    /* Kontakt */
-    .kontakt-content {
-        flex-direction: column;
-        padding: 50px 20px;
-        gap: 20px;
-        align-items: center;
-    }
-
-    .kontakt-content img {
-        width: 90%;
-        max-width: 400px;
-        margin: 0 auto;
-    }
-
-    .kontakt {
-        max-width: 90%;
-    }
-
-    /* Behandlingar */
-    .behandlingar-content {
-        padding: 50px 20px;
-        gap: 20px;
-    }
-
-    .behandling-kolumner, .big-column {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    /* Cart-panel */
-    #cart-panel {
-        right: 20px;
-        top: 60px;
-        width: 80%;
-        max-width: 300px;
-    }
-
-}
-
-@media screen and (max-width: 650px) {
-    .blackweek{
-        visibility: hidden;
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .welcome,
-    .info,
-    .omoss-content,
-    .kontakt-content,
-    .bildspel-div,
-    .kraftborsten {
-        width: 100%;
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        padding-left: 10px;
-        padding-right: 0px;
         display: flex;
-        flex-direction: column;
-        align-items: center; /* centrerar innehållet */
+        justify-content: center; 
+        gap: 10px;
+        width: 100%;
+        padding: 0;
+        list-style: none;
     }
 
-    #badrum,
-    .kraftborsten .bild-wrap img,
-    .omoss-content img,
-    .kontakt-content img,
-    .bildspel-div img {
-        width: 100%;
-        max-width: 100%;
-        height: auto;
+    /* Shopify Frame Fix */
+    .shopify-buy-frame--cart {
+        width: 100% !important; 
+    }
+}
+
+/* ==========================================
+   ANPASSNING FÖR SMÅ SKÄRMAR <= 650px
+   ========================================== */
+@media screen and (max-width: 650px) {
+    .blackweek {
+        display: none !important;
+    }
+    .cart-icon {
+        padding-right: 15px;
+        position: relative;
+        display: block;
+    }
+}
+
+/* ==========================================
+   ANPASSNING FÖR RIKTIGT SMÅ SKÄRMAR <= 400px
+   ========================================== */
+@media screen and (max-width: 400px) {
+    .storbokstav {
+        font-size: 32px;
     }
 
-    .kontaktknapp {
-        width: 100%;
+    .kraftborsten {
+        max-width: 280px;
+        padding-bottom: 20px;
+    }
+    
+    .kraftborsten .bild-wrap {
+        width: 85%; /* Ännu lite mindre bild på mycket små skärmar */
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .welcome {
+        padding-top: 80px;
     }
 }
