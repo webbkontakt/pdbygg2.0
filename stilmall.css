@@ -502,85 +502,120 @@ footer::before {
 }
 
 
-/* Overlay */
+/* ================= COOKIE SYSTEM ================= */
+
+/* 1. Det mörka lagret (Overlay) */
 #cookie-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7); /* Lite mörkare för bättre kontrast */
+  z-index: 999998; /* Precis under bannern */
   display: none;
-  pointer-events: none; /* inte blockerande som default */
+  pointer-events: auto; /* Ändrad till auto för att blockera klick på sidan bakom */
 }
 
-/* Cookie banner */
+/* 2. Själva bannern (den lilla rutan i botten) */
 .cookie-banner {
   position: fixed;
-  bottom: 20px;
+  bottom: 30px; /* Lite mer luft från botten */
   left: 50%;
   transform: translateX(-50%);
   background: white;
-  padding: 1.5rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  z-index: 10000; /* över overlay */
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  z-index: 999999; /* Högst upp */
   text-align: center;
-  max-width: 90%;
-  border-radius: 10px;
-  pointer-events: auto;
+  width: 90%;
+  max-width: 450px;
+  border-radius: 15px;
+  display: none; /* JS styr detta */
 }
 
-/* Cookie settings */
+/* 3. Inställningsrutan (Customization) */
 .cookie-settings {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
-  padding: 1.5rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  z-index: 10001; /* högst */
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  z-index: 1000000; /* Ännu högre än bannern */
   text-align: center;
-  max-width: 90%;
-  border-radius: 10px;
-  pointer-events: auto;
-  display: none;
+  width: 90%;
+  max-width: 450px;
+  border-radius: 15px;
+  display: none; /* JS styr detta */
 }
 
-/* Knappar */
+/* Knappar och interaktion */
 .cookie-banner button,
 .cookie-settings button {
-  padding: 10px;
-  border-radius: 15px;
-  width: 200px;
-  height: 50px;
+  padding: 12px;
+  border-radius: 10px;
+  width: 100%; /* Full bredd på mobilen för enklare klick */
+  max-width: 200px;
+  height: auto;
+  cursor: pointer;
+  margin: 10px 5px;
+  border: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+#accept-all { 
+  background-color: #b6e48b; 
+  color: #1a1a1a;
+}
+
+#accept-all:hover { background-color: #85d837; }
+
+#customize {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+}
+
+#customize:hover { background-color: #e0e0e0; }
+
+#save-settings {
+  background-color: #b6e48b;
+}
+
+/* Checkboxar och Labels */
+.cookie-settings label {
+  font-size: 18px;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  margin: 15px auto;
+  max-width: 250px;
   cursor: pointer;
 }
 
-#accept-all { background-color: #b6e48b; }
-#accept-all:hover { background-color: #85d837; }
-#customize:hover { background-color: #bbbbbb; }
-.cookie-settings button { background-color: #b6e48b; }
-.cookie-settings button:hover { background-color: #93db4f; }
-
-/* Dölj element */
-.hidden { display: none; }
-
-/* Blockera scroll när popupen visas */
-body.cookie-blocked { overflow: hidden; }
-
-/* Checkbox-styling */
-#essential, #analytics, #marketing { font-size: 20px; }
-.cookie-settings label {
-  font-size: 20px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 0 auto 10px auto;
+.cookie-settings input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
-.cookie-settings p { font-size: 22px; font-family: Georgia, 'Times New Roman', Times, serif; }
+
+.cookie-settings p {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+/* Hjälpklasser */
+.hidden { display: none !important; }
+
+/* Stoppa scroll när mörkret visas */
+body.cookie-blocked {
+  overflow: hidden !important;
+  height: 100vh;
+}
 
 
 
