@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PD Bygg Jonkoping</title>
-    <link rel="stylesheet" href="kontakt.css">
     <link rel="stylesheet" href="stilmall.css">
     <link rel="stylesheet" href="mediaquery.css">
-    <link rel="stylesheet" href="cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
@@ -20,7 +18,7 @@
         </div>
         <div id="logga">
             <a href="index.html">
-                <img id="logo" src="PDBygglogo.png" alt="pdbygglogo">
+                <img id="logo" src="PDBYGG.svg" alt="pdbygglogo">
             </a>
         </div>
         <div id="meny">
@@ -35,9 +33,7 @@
             </nav>
         </div>
 
-        <div class="cart-icon" id="toggle-cart" style="cursor: pointer;">
-            <i class="fa-solid fa-cart-shopping"></i>
-        </div>
+        <div id="shopify-cart-trigger"></div>
         
     </header>
     <div class="kontakt-container">
@@ -79,8 +75,8 @@
                     <h4>Kontakt</h4> 
                     <ul>
                         <li><a href=""><i class="fa-solid fa-phone"></i>+46762082095</a></li>
-                        <li><a href=""><i class="fa-solid fa-envelope"></i>hvabm@hotmail.com</a></li>
-                        <a href="arbete.html" class="bestallarbeteknapp">BESTÄLL ARBETE</a>
+                        <li><a href=""><i class="fa-solid fa-envelope"></i>pdbyggab@hotmail.com</a></li>
+                        <a href="arbete.html" class="kontaktknapp">BESTÄLL ARBETE</a>
                     </ul>
                 </div>
                 <div class="footer-column2">
@@ -124,9 +120,8 @@
             <img src="icons/googlepay.svg" alt="Google Pay">
         </div>
     </div>
-        <p class="copyright">©2014 pdbygg</p>
+        <p class="copyright">©2025 pdbygg</p>
     </footer>
-
 
     <div id="cookie-overlay"></div>
     <div id="cookie-banner" class="cookie-banner">
@@ -134,16 +129,15 @@
         <button id="accept-all">Acceptera alla</button>
         <button id="customize">Anpassa</button>
     </div>
-    <div id="cookie-settings" class="cookie-settings" style="display: none;">
-        <p>Välj vilka cookies du godkänner:</p>
-        <label><input type="checkbox" id="essential" checked disabled> Nödvändiga (krävs)</label><br>
-        <label><input type="checkbox" id="analytics"> Analys</label><br>
-        <label><input type="checkbox" id="marketing"> Marknadsföring</label><br>
-        <button id="save-settings">Acceptera</button>
+    <div id="cookie-settings" class="cookie-settings">
+  <p>Välj vilka cookies du godkänner:</p>
+    <label><input type="checkbox" id="essential" checked disabled> Nödvändiga (krävs)</label><br>
+    <label><input type="checkbox" id="analytics"> Analys</label><br>
+    <label><input type="checkbox" id="marketing"> Marknadsföring</label><br>
+    <button id="save-settings">Acceptera</button>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script src="script.js"></script>
 
+    <script src="script.js"></script>
 </body>
 </html>

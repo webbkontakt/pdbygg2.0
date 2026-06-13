@@ -8,7 +8,17 @@
     <link rel="stylesheet" href="mediaquery.css">
     <link rel="stylesheet" href="cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    <style>
+  /* Tvinga fram knapparna igen på just denna sida */
+  iframe[class*="shopify-buy-frame"],
+  .shopify-buy-frame,
+  [id^='product-component'] {
+      display: block !important;
+      visibility: visible !important;
+      position: relative !important;
+      left: 0 !important;
+  }
+</style>
 </head>
 <body>
     <header id="myHeader">
@@ -33,11 +43,7 @@
                 </ul>
             </nav>
         </div>
-
-        <div class="cart-icon" id="toggle-cart" style="cursor: pointer;">
-            <i class="fa-solid fa-cart-shopping"></i>
-        </div>
-        
+        <div id="shopify-cart-trigger"></div>
     </header>
 
     <div class="formularcontainer">
@@ -64,7 +70,10 @@
                     <option value="">...</option>
                     <option value="Enkel">Badrum</option>
                     <option value="Medel">Kök</option>
-                    <option value="Avancerad">Altan</option>
+                    <option value="Avancerad">Hall</option>
+                    <option value="Avancerad">Sovrum</option>
+                    <option value="Avancerad">Garderob</option>
+                    <option value="Avancerad">Trappa</option>
                 </select>
 
                 <label for="subject">Sammanfattning av önskat arbete</label>
@@ -115,7 +124,7 @@
         <label><input type="checkbox" id="marketing"> Marknadsföring</label><br>
         <button id="save-settings">Acceptera</button>
     </div>
-
+    
     <script src="script.js"></script>
 </body>
 </html>

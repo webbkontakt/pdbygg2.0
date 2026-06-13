@@ -85,121 +85,58 @@ document.querySelectorAll("#meny a").forEach(link => {
 
 // ================== SHOPIFY BUY BUTTON INIT ==================
 (function () {
-  var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
-  if (window.ShopifyBuy) {
-    if (window.ShopifyBuy.UI) {
-      ShopifyBuyInit();
-    } else {
-      loadScript();
+    var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+    function loadScript() {
+        var script = document.createElement('script');
+        script.async = true; script.src = scriptURL;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+        script.onload = ShopifyBuyInit;
     }
-  } else {
-    loadScript();
-  }
+    if (window.ShopifyBuy) { if (window.ShopifyBuy.UI) { ShopifyBuyInit(); } else { loadScript(); } } else { loadScript(); }
 
-  function loadScript() {
-    var script = document.createElement('script');
-    script.async = true;
-    script.src = scriptURL;
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
-    script.onload = ShopifyBuyInit;
-  }
-
-  function ShopifyBuyInit() {
-    var client = ShopifyBuy.buildClient({
-      domain: 'huu0xn-e1.myshopify.com',
-      storefrontAccessToken: 'f66ff6755aa4d8ec01b3c288d3dd90b3',
-    });
-
-    ShopifyBuy.UI.onReady(client).then(function (ui) {
-      
-      // GEMENSAMMA KNAPP-INSTÄLLNINGAR
-      const commonOptions = {
-        "product": {
-          "styles": {
-            "product": { "margin-left": "0px", "margin-bottom": "0px", "padding-top": "0px" },
-            "button": {
-              "height": "40px",
-              "width": "100%",
-              "font-size": "14px",
-              "background-color": "#7ac039",
-              "border-radius": "5px",
-              ":hover": { "background-color": "#b5d854" }
-            }
-          },
-          "contents": { "img": false, "title": false, "price": false, "options": false },
-          "text": { "button": "KÖP" }
-        },
-        "cart": {
-          "popup": false,
-          "contents": {
-            "button": true, // Aktiverar Checkout-knappen
-            "footer": true  // Visar summan och knappen längst ner
-          },
-          "styles": { 
-            "button": { 
-              "background-color": "#7ac039",
-              ":hover": { "background-color": "#b5d854" }
-            } 
-          },
-          "text": {
-            "title": "Kundvagn",
-            "total": "Totalt",
-            "empty": "Din kundvagn är tom.",
-            "notice": "Frakt och rabattkoder läggs till i kassan.",
-            "button": "TILL KASSAN"
-          }
-        },
-        "toggle": {
-          "styles": {
-            "toggle": { "background-color": "#7ac039", "count": { "font-size": "14px" } }
-          }
-        }
-      };
-
-      // PRODUKT 1: KRAFTBORSTEN
-      ui.createComponent('product', {
-        id: '10766895120722',
-        node: document.getElementById('product-component-1778246133497'),
-        moneyFormat: '%7B%7Bamount_with_space_separator%7D%7D%20kr',
-        options: commonOptions
-      });
-
-      // PRODUKT 2: HINKLÅSET
-      ui.createComponent('product', {
-        id: '10766910390610', // <-- DUBBELKOLLA DETTA ID FRÅN SHOPIFY ADMIN
-        node: document.getElementById('product-component-1778259314915'),
-        moneyFormat: '%7B%7Bamount_with_space_separator%7D%7D%20kr',
-        options: commonOptions
-      });
-
-      // KUNDVAGNS-TRIGGER (Öppna/Stäng med din egen ikon)
-      var cartTrigger = document.getElementById('toggle-cart');
-      if (cartTrigger) {
-        cartTrigger.addEventListener('click', function () {
-          ui.toggleCart(); 
+    function ShopifyBuyInit() {
+        var client = ShopifyBuy.buildClient({
+            domain: 'huu0xn-e1.myshopify.com',
+            storefrontAccessToken: 'f66ff6755aa4d8ec01b3c288d3dd90b3',
         });
-      }
-      // KUNDVAGNS-TRIGGER
-var cartTrigger = document.getElementById('toggle-cart');
-if (cartTrigger) {
-    cartTrigger.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation(); // Hindrar klicket från att sprida sig till bakgrunden
-        
-        if (ui.cart.isVisible) {
-            ui.cart.closeCart();
-        } else {
-            ui.cart.openCart();
-        }
-    });
-}
-    });
-  }
-  if (ui.cart.isVisible) {
-    document.body.style.overflow = 'hidden'; // Låser bakgrunden
-    ui.cart.closeCart();
-} else {
-    document.body.style.overflow = ''; // Släpper bakgrunden
-    ui.cart.openCart();
-}
+
+        ShopifyBuy.UI.onReady(client).then(function (ui) {
+            // Vi skapar en separat komponent bara för kundvagnen/ikonen
+            ui.createComponent('cart', {
+                node: document.getElementById('shopify-cart-trigger'), // Tvingar den hit!
+                options: {
+                    "cart": {
+                        "popup": false,
+                        "styles": { "button": { "background-color": "#7ac039" } },
+                        "text": { "title": "Kundvagn", "button": "TILL KASSAN" }
+                    },
+                    "toggle": {
+                        "sticky": false,
+                        "styles": {
+                            "toggle": {
+                                "background-color": "transparent",
+                                "icon": { "fill": "#ffffff" },
+                                "count": { "background-color": "transparent" }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Initiera produkterna som vanligt (utan toggle här)
+            const prodOptions = {
+                "product": {
+                    "styles": { "button": { "background-color": "#7ac039" } },
+                    "contents": { "img": false, "title": false, "price": false },
+                    "text": { "button": "KÖP" }
+                }
+            };
+
+            var n1 = document.getElementById('product-component-1778246133497');
+            if (n1) { ui.createComponent('product', { id: '10766895120722', node: n1, options: prodOptions }); }
+
+            var n2 = document.getElementById('product-component-1778259314915');
+            if (n2) { ui.createComponent('product', { id: '10766910390610', node: n2, options: prodOptions }); }
+        });
+    }
 })();

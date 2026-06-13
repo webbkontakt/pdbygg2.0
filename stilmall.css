@@ -6,7 +6,7 @@ html, body{
     padding: 0;
     font-family: 'Inter', sans-serif;
     letter-spacing: -.2px;
-    background-image: url(woody.jpg);
+    background-image: url(bilder/woody.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -17,37 +17,29 @@ html, body{
 .mobilmeny{
     display: none;
 }
+
+/* ÄNDRAD: Lagt till padding på sidorna och box-sizing för att rymma logga + vagn snyggt */
 header{
     position: fixed;
     width: 100%;
     height: 70px;
     display: flex;
     align-items: center;
-    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 40px;
+    box-sizing: border-box;
     background-color: transparent;
     z-index: 10999;
 }
-header.scrolled{
-    background-color: rgb(255, 255, 255);
-    border-bottom: 1px solid rgb(173, 173, 173);
-    position: fixed !important;
-    z-index: 9999999;
+
+#logga{
+    padding-top: 250px;
 }
 
-#logga a{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-}
 #logga img{
-    height: 250px;
-    margin-left: 20px;
-}
-.logo{
-    width: 150px;
-    margin-left: 80px;
+    display: block;
+    height: 350px;
+    padding: 0;
 }
 h1{
     font-size: 40px;
@@ -71,11 +63,15 @@ h6{
 p{
     font-size: 16px;
 }
+
+/* ÄNDRAD: Tog bort fast margin-left. Nu helt centrerad oavsett skärm */
 #meny{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 430px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 #meny li{
     font-size: 14px;
@@ -165,11 +161,13 @@ p{
 .bild-wrap .normal {
   opacity: 1 !important;
   z-index: 2;
+  padding-top: 15px;
 }
 
 .bild-wrap .hover-img {
   opacity: 0;
   z-index: 3;
+  background-color: white;
 }
 
 .kraftborsten:hover .hover-img {
@@ -179,6 +177,11 @@ p{
 
 .kraftborsten:hover .normal {
   opacity: 0;
+}
+
+#hinklåsID{
+    height: 50% !important;
+    width: auto;
 }
 .pris-div{
     font-size: 20px;
@@ -207,23 +210,23 @@ p{
 }
 
 .pris-container .pris-div {
-    margin-bottom: 0px !important; /* Tar bort luft under priset */
+    margin-bottom: 0px !important;
 }
 
 .pris-container .pris-div p {
-    margin-bottom: 5px !important; /* Ger bara ett litet mellanrum */
+    margin-bottom: 5px !important;
 }
 
 .pris-container #product-component-1778246133497, #product-component-1778259314915{
     width: 120px !important;
     height: 40px !important;
-    margin-top: -5px !important; /* NEGATIVT värde drar knappen UPPÅT mot priset */
+    margin-top: -5px !important;
     overflow: visible !important;
 }
 
 .pris-container #product-component-1778246133497 iframe, #product-component-1778259314915 iframe{
-    height: 60px !important; /* Vi sänkte denna från 60px för att minska tomrummet */
-    margin-top: -5px !important; 
+    height: 60px !important;
+    margin-top: -5px !important;
     width: 100% !important;
 }
 
@@ -275,7 +278,6 @@ p{
     list-style: none;
     text-decoration: none;
     font-size: 18px;
-
 }
 .kontakt-lista a{
     color: rgb(43, 43, 43);
@@ -330,28 +332,28 @@ footer{
 footer::before {
   content: "";
   position: absolute;
-  top: -5px; /* flytta upp trekanten över kanten */
+  top: -5px;
   left: 50%;
   transform: translateX(-50%);
   width: 0;
   height: 0;
   border-left: 30px solid transparent;
   border-right: 30px solid transparent;
-  border-top: 30px solid white; /* Färgen på BAKGRUNDEN ovanför footern */
+  border-top: 30px solid white;
   z-index: 1;
 }
 
 .footerkontakt::before {
   content: "";
   position: absolute;
-  top: -5px; /* flytta upp trekanten över kanten */
+  top: -5px;
   left: 50%;
   transform: translateX(-50%);
   width: 0;
   height: 0;
   border-left: 30px solid transparent;
   border-right: 30px solid transparent;
-  border-top: 30px solid rgb(250, 238, 224); /* Färgen på BAKGRUNDEN ovanför footern */
+  border-top: 30px solid rgb(250, 238, 224);
   z-index: 1;
 }
 .payment-icons {
@@ -365,7 +367,7 @@ footer::before {
 }
 
 .payment-icons img {
-    height: 45px;    /* Ikonerna är redan kort-formade */
+    height: 45px;
     width: auto;
     transition: transform 0.2s ease;
     width: 40px;
@@ -399,7 +401,6 @@ footer::before {
     list-style-type: none;
     text-decoration: none;
     overflow: visible;
-    
 }
 .instagram-div{
     background-color: rgb(255, 255, 255);
@@ -422,14 +423,12 @@ footer::before {
     flex-direction: row;
     justify-content: space-between;
     max-width: 100%;
-
 }
 .footer-column1{
     display: flex;
     align-items: flex-start;
     flex-direction: column;
     padding-left: 200px;
-
 }
 .footer-column2{
     padding-right: 200px;
@@ -504,37 +503,34 @@ footer::before {
 
 /* ================= COOKIE SYSTEM ================= */
 
-/* 1. Det mörka lagret (Overlay) */
 #cookie-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.7); /* Lite mörkare för bättre kontrast */
-  z-index: 999998; /* Precis under bannern */
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999998;
   display: none;
-  pointer-events: auto; /* Ändrad till auto för att blockera klick på sidan bakom */
+  pointer-events: auto;
 }
 
-/* 2. Själva bannern (den lilla rutan i botten) */
 .cookie-banner {
   position: fixed;
-  bottom: 30px; /* Lite mer luft från botten */
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
   background: white;
   padding: 2rem;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  z-index: 999999; /* Högst upp */
+  z-index: 999999;
   text-align: center;
   width: 90%;
   max-width: 450px;
   border-radius: 15px;
-  display: none; /* JS styr detta */
+  display: none;
 }
 
-/* 3. Inställningsrutan (Customization) */
 .cookie-settings {
   position: fixed;
   top: 50%;
@@ -543,20 +539,19 @@ footer::before {
   background: white;
   padding: 2rem;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  z-index: 1000000; /* Ännu högre än bannern */
+  z-index: 1000000;
   text-align: center;
   width: 90%;
   max-width: 450px;
   border-radius: 15px;
-  display: none; /* JS styr detta */
+  display: none;
 }
 
-/* Knappar och interaktion */
 .cookie-banner button,
 .cookie-settings button {
   padding: 12px;
   border-radius: 10px;
-  width: 100%; /* Full bredd på mobilen för enklare klick */
+  width: 100%;
   max-width: 200px;
   height: auto;
   cursor: pointer;
@@ -584,7 +579,6 @@ footer::before {
   background-color: #b6e48b;
 }
 
-/* Checkboxar och Labels */
 .cookie-settings label {
   font-size: 18px;
   font-family: inherit;
@@ -608,10 +602,8 @@ footer::before {
   margin-bottom: 20px;
 }
 
-/* Hjälpklasser */
 .hidden { display: none !important; }
 
-/* Stoppa scroll när mörkret visas */
 body.cookie-blocked {
   overflow: hidden !important;
   height: 100vh;
@@ -724,6 +716,9 @@ body.cookie-blocked {
     flex-direction: column;
     max-width: 40%;
 }
+.kontakt-container{
+    background-color: transparent;
+}
 
 .fade-in {
     opacity: 0;
@@ -752,6 +747,7 @@ body.cookie-blocked {
     position: absolute;
     margin: 0 auto;
     padding-bottom: 5px;
+    color: white;
 }
 
 .bildspel{
@@ -794,7 +790,7 @@ body.cookie-blocked {
 
 .cart-icon i {
     font-size: 22px;
-    color: white; /* Vi gör den vit som standard för din transparenta header */
+    color: white;
     transition: color 0.3s;
 }
 
@@ -802,29 +798,24 @@ body.cookie-blocked {
     display: none !important;
 }
 
-
-/* När headern blir vit vid scroll, gör ikonen svart så den syns */
 header.scrolled .cart-icon i {
     color: black;
 }
-/* Gör kundvagnens innehåll skrollbart men behåll toppen och botten fasta */
 .shopify-buy__cart-items-wrapper {
     flex-grow: 1;
-    overflow-y: auto; /* Endast varorna skrollar */
+    overflow-y: auto;
 }
 
-/* Denna styr själva behållaren som Shopify skapar dynamiskt */
 .shopify-buy-frame--cart {
     position: fixed !important;
     top: 0 !important;
     right: 0 !important;
-    left: auto !important; /* Säkerställ att den inte sträcks ut från vänster */
+    left: auto !important;
     height: 100vh !important;
-    width: 400px !important; /* Eller den bredd din vagn har */
-    z-index: 2147483647 !important; /* Max värde för z-index för att ligga över ALLT */
+    width: 400px !important;
+    z-index: 2147483647 !important;
 }
 
-/* Tvinga innehållet inuti att också hålla höjden */
 .shopify-buy-frame--cart iframe {
     height: 100% !important;
     width: 100% !important;
@@ -832,21 +823,17 @@ header.scrolled .cart-icon i {
     top: 0 !important;
 }
 
-/* Denna ser till att du kan klicka inuti vagnen när den faktiskt visas */
 .shopify-buy-frame--cart.is-visible {
     pointer-events: all;
 }
 
-/* Om din egen ikon också försvinner när du skrollar, gör den fast också */
+/* ÄNDRAD: Tog bort position: fixed så ikonen inte flyger fritt utanför headern */
 .cart-icon {
-    position: fixed; /* Byt från absolute till fixed */
-    top: 20px;       /* Justera så den hamnar snyggt i din header */
+    top: 20px;
     right: 20px;
     z-index: 20001 !important;
 }
 
-/* Försök tvinga innehållet inuti iframen att bete sig som en flexbox */
-/* (Detta fungerar ibland beroende på hur webbläsaren tolkar iframen) */
 .shopify-buy__cart {
     height: 100% !important;
     display: flex !important;
@@ -854,9 +841,21 @@ header.scrolled .cart-icon i {
 }
 
 .shopify-buy__cart-footer {
-    margin-top: auto !important; /* Trycker ner footern till botten */
+    margin-top: auto !important;
     position: relative !important;
     background: #fff !important;
+}
+
+/* ÄNDRAD: Tog bort hårdkodad bredd, lät den sköta sig med flex-layouten */
+#shopify-cart-trigger {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+}
+#shopify-cart-trigger iframe {
+    height: 100% !important;
+    width: 100% !important;
 }
 
 
@@ -884,10 +883,11 @@ input[type=text], select, textarea {
   }
   
   input[type=submit] {
-    background-color: #04AA6D;
+    background-color: transparent;
+    border: 2px solid rgb(122, 204, 122);
     color: white;
-    padding: 12px 20px;
-    border: none;
+    font-size: 17px;
+    padding: 8px 24px;
     border-radius: 4px;
     cursor: pointer;
     float: right;
@@ -899,7 +899,7 @@ input[type=text], select, textarea {
   
   .contactform {
     border-radius: 50px;
-    background-color: #ffd49c;
+    background-color: transparent;
     width: 60%;
     padding: 40px 20px;
     display: flex;
@@ -907,6 +907,9 @@ input[type=text], select, textarea {
     align-items: center;
     border-radius: 2px;
     text-align: left;
+  }
+  #kontaktform label{
+    color: white;
   }
 
   .formularcontainer{
@@ -980,6 +983,13 @@ input[type=text], select, textarea {
 .produkt-info h1 {
     font-size: 32px;
     margin-bottom: 10px;
+}
+.produkt-info h3{
+    color: black;
+    padding-top: 20px;
+}
+.produkt-info p{
+    line-height: 30px;
 }
 
 
@@ -1057,4 +1067,30 @@ input[type=text], select, textarea {
     margin: 0 auto;
     padding: 100px 0;
     min-height: 500px;
+}
+.produkt-container {
+    flex-wrap: wrap;
+}
+
+.video-container {
+    width: 100%;
+    display: flex;
+    margin: 20px 0;
+    gap: 40px;
+}
+
+.video-container video {
+    width: 50%;
+    height: auto;
+    border: 2px solid black;
+    box-sizing: border-box;
+    justify-content: left;
+}
+.instruction-list li{
+    line-height: 40px;
+    display: flex;
+    justify-content: left;
+}
+.instruction-list{
+    align-items: center;
 }
