@@ -230,13 +230,16 @@ p{
     width: 100% !important;
 }
 
-.kontaktknapp{
+.kontaktknapp1, .kontaktknapp2{
     color: white;
     text-decoration: none;
     padding: 14px;
     border-radius: 5px;
     border: 1px solid white;
     background: transparent;
+}
+.kontaktknapp2{
+    display: none;
 }
 .content h3{
     margin-bottom: 50px;
@@ -294,6 +297,7 @@ p{
 }
 .produkter{
     display: flex;
+    justify-content: center;
     flex-direction: row;
     padding: 150px 80px 250px;
     gap: 100px;
@@ -321,41 +325,26 @@ p{
     gap: 20px;
     justify-content: center;
 }
-footer{
+footer {
     position: relative;
     border-top: 4px solid #3f2312;
     width: 100%;
     background-color: #3f2312;
     color: white;
-    padding: 40px 0px;
-}
-footer::before {
-  content: "";
-  position: absolute;
-  top: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 30px solid transparent;
-  border-right: 30px solid transparent;
-  border-top: 30px solid white;
-  z-index: 1;
+    padding: 60px 0px 40px 0px; /* Ökat padding i toppen så att texten inte krockar med triangeln */
+    
+    /* FIX: Klipper ut en transparent triangel i mitten av footerns överkant */
+    clip-path: polygon(
+        0% 0%, 
+        calc(50% - 30px) 0%, 
+        50% 30px, 
+        calc(50% + 30px) 0%, 
+        100% 0%, 
+        100% 100%, 
+        0% 100%
+    );
 }
 
-.footerkontakt::before {
-  content: "";
-  position: absolute;
-  top: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 30px solid transparent;
-  border-right: 30px solid transparent;
-  border-top: 30px solid rgb(250, 238, 224);
-  z-index: 1;
-}
 .payment-icons {
     display: flex;
     gap: 12px;
@@ -474,10 +463,23 @@ footer::before {
 .boka:hover, .behandling-boka:hover{
     transform: scale(0.85);
 }
+.omoss-kolumn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+.omoss-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 150px 0 150px;
+}
 .omoss-text{
     padding: 20px;
     width: 80%;
-    border: 1px solid #000;
+    border: 1px solid #ffffff;
+    color: white;
     border-radius: 5px;
     margin: 20px;
     display: flex;
@@ -489,6 +491,9 @@ footer::before {
     flex-direction: column;
     align-items: center;
     line-height: 30px;
+}
+.omoss-kolumn h4{
+    font-size: 20px !important;
 }
 .kontakt-boka{
     width: 125px;
@@ -719,6 +724,14 @@ body.cookie-blocked {
 .kontakt-container{
     background-color: transparent;
 }
+.kontakt-kolumn{
+    background-color: transparent;
+    color: white;
+}
+.kontaktinfo-text, .kontaktinfo-text a{
+    color: white;
+}
+
 
 .fade-in {
     opacity: 0;

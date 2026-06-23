@@ -1,22 +1,36 @@
-/* ==========================================
-   MEDIA QUERY FÖR SKÄRMAR <= 1024px
-   ========================================== */
 @media screen and (max-width: 1024px) {
 
     /* Header layout */
     header {
+        position: fixed; /* Säkerställer att headern ligger kvar */
+        width: 100%;
+        display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-between; /* Trycker menyknappen och vagnen till varsin kant */
         align-items: center;
         padding: 10px 20px;
-        height: 60px;
+        height: 200px;
+        box-sizing: border-box;
     }
-    #logga {
+    
+    /* ÄNDRAD: Helt centrerad logga oavsett elementen på sidorna */
+        #logga {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         max-width: 50%;
-        margin-left: 20px;
+        margin: 0;
+        padding: 0; /* Se till att denna står på 0 */
+    }
+        #logo {
+        height: 240px !important;
+        width: auto !important;
+        display: block !important;
     }
 
     /* Hamburgermenyknappen */
@@ -24,6 +38,7 @@
         display: block;
         position: relative;
         z-index: 10000;
+        order: -1; /* Tvingar hamburgarmenyn att alltid ligga längst till vänster */
     }
     #meny-knapp i{
         padding: 10px;
@@ -45,6 +60,7 @@
         z-index: 9999;
         visibility: hidden;
         box-sizing: border-box;
+        transform: none; /* Återställer centreringen från desktop-vyn */
     }
 
     #meny.show {
@@ -76,7 +92,7 @@
         position: relative;
         top: 0;
         transform: none;
-        margin-left: auto;
+        margin-left: auto; /* Trycker ikonen maximalt till höger */
     }
 
     #logga h1 {
@@ -212,7 +228,6 @@
     }
 
     .bildspel-div img {
-        width: 90%;
         max-width: 400px;
         height: 300px; 
         object-fit: cover;
@@ -282,6 +297,27 @@
     .shopify-buy-frame--cart {
         width: 100% !important; 
     }
+    
+    .produkter{
+        flex-direction: column;
+        padding-top: 180px;
+    }
+    .kontakt-kolumn{
+        flex-direction: column;
+        padding-top: 160px;
+    }
+    .kontaktinfo{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .kontaktinfo img{
+        width: 100%;
+    }
+    .kontaktknapp1{
+        display: none;
+    }
+    
 }
 
 /* ==========================================
@@ -312,7 +348,7 @@
     }
     
     .kraftborsten .bild-wrap {
-        width: 85%; /* Ännu lite mindre bild på mycket små skärmar */
+        width: 85%;
     }
 
     h2 {

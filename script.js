@@ -94,28 +94,93 @@ document.querySelectorAll("#meny a").forEach(link => {
     }
     if (window.ShopifyBuy) { if (window.ShopifyBuy.UI) { ShopifyBuyInit(); } else { loadScript(); } } else { loadScript(); }
 
+    // Global städfunktion som tvättar bort $ och Subtotal
+    function städaKundvagn() {
+        const iframe = document.querySelector('#shopify-cart-trigger iframe');
+        if (!iframe || !iframe.contentDocument) return;
+
+        const doc = iframe.contentDocument;
+
+        // Fixa radpriser, totalsumma och belopp
+        const priser = doc.querySelectorAll('.shopify-buy__cart-item__price, .shopify-buy__cart-subtotal__price, .shopify-buy__cart-subtotal__amount');
+        priser.forEach(el => {
+            let text = el.textContent;
+            if (text.includes('$')) {
+                let renSiffra = text.replace('$', '').replace('.00', '').trim();
+                el.textContent = renSiffra + " kr";
+            }
+        });
+
+        // Översätt "Subtotal" till "Totalt:"
+        const subtotalTitel = doc.querySelector('.shopify-buy__cart-subtotal__title');
+        if (subtotalTitel && (subtotalTitel.textContent.toLowerCase().includes('subtotal') || subtotalTitel.textContent.includes('Total'))) {
+            subtotalTitel.textContent = 'Totalt:';
+        }
+    }
+
     function ShopifyBuyInit() {
         var client = ShopifyBuy.buildClient({
             domain: 'huu0xn-e1.myshopify.com',
             storefrontAccessToken: 'f66ff6755aa4d8ec01b3c288d3dd90b3',
+            language: 'sv-SE'
         });
 
         ShopifyBuy.UI.onReady(client).then(function (ui) {
-            // Vi skapar en separat komponent bara för kundvagnen/ikonen
             ui.createComponent('cart', {
-                node: document.getElementById('shopify-cart-trigger'), // Tvingar den hit!
+                node: document.getElementById('shopify-cart-trigger'),
                 options: {
+                    "global": {
+                        "moneyFormat": "%7B%7Bamount_with_space_separator%7D%7D%20kr"
+                    },
                     "cart": {
                         "popup": false,
-                        "styles": { "button": { "background-color": "#7ac039" } },
-                        "text": { "title": "Kundvagn", "button": "TILL KASSAN" }
+                        "styles": {
+                            "button": {
+                                "background-color": "#79bc55",
+                                ":hover": { "background-color": "#6da94d" },
+                                ":focus": { "background-color": "#6da94d" },
+                                "border-radius": "6px"
+                            }
+                        },
+                        "text": { 
+                            "title": "Kundvagn", 
+                            "total": "Totalt",
+                            "empty": "Din kundvagn är tom.",
+                            "notice": "Frakt och rabattkoder finns i kassan.",
+                            "button": "Slutför köp"
+                        },
+                        "DOMEvents": {
+                            "render": function (component) {
+                                // 1. Uppdatera antalet i din egna HTML-ikon
+                                const antalSpan = document.getElementById('vagn-antal');
+                                if (antalSpan) {
+                                    antalSpan.textContent = component.model.lineItems.reduce((total, item) => total + item.quantity, 0);
+                                }
+
+                                // 2. Starta bevakaren live inuti iframen
+                                setTimeout(function() {
+                                    const iframe = document.querySelector('#shopify-cart-trigger iframe');
+                                    if (iframe && iframe.contentDocument && !iframe.dataset.observerStarted) {
+                                        iframe.dataset.observerStarted = "true";
+                                        
+                                        const observer = new MutationObserver(städaKundvagn);
+                                        observer.observe(iframe.contentDocument.body, {
+                                            childList: true,
+                                            subtree: true,
+                                            characterData: true
+                                        });
+                                    }
+                                    städaKundvagn();
+                                }, 50);
+                            }
+                        }
                     },
                     "toggle": {
                         "sticky": false,
                         "styles": {
                             "toggle": {
                                 "background-color": "transparent",
-                                "icon": { "fill": "#ffffff" },
+                                "icon": { "fill": "#4ea733" },
                                 "count": { "background-color": "transparent" }
                             }
                         }
@@ -123,10 +188,28 @@ document.querySelectorAll("#meny a").forEach(link => {
                 }
             });
 
-            // Initiera produkterna som vanligt (utan toggle här)
+            // FIX: Lagt till "width": "100%" och anpassat padding för en bredare knapp
             const prodOptions = {
                 "product": {
-                    "styles": { "button": { "background-color": "#7ac039" } },
+                    "moneyFormat": "%7B%7Bamount_with_space_separator%7D%7D%20kr",
+                    "styles": {
+                        "product": {
+                            "@media (min-width: 601px)": {
+                                "max-width": "calc(25% - 20px)",
+                                "margin-left": "20px",
+                                "margin-bottom": "50px"
+                            }
+                        },
+                        "button": {
+                            "background-color": "#79bc55",
+                            ":hover": { "background-color": "#6da94d" },
+                            ":focus": { "background-color": "#6da94d" },
+                            "border-radius": "6px",
+                            "padding-left": "20px",
+                            "padding-right": "20px",
+                            "width": "100%"
+                        }
+                    },
                     "contents": { "img": false, "title": false, "price": false },
                     "text": { "button": "KÖP" }
                 }
@@ -137,6 +220,12 @@ document.querySelectorAll("#meny a").forEach(link => {
 
             var n2 = document.getElementById('product-component-1778259314915');
             if (n2) { ui.createComponent('product', { id: '10766910390610', node: n2, options: prodOptions }); }
+            
+            window.addEventListener('mousemove', städaKundvagn);
+            window.addEventListener('click', function() {
+                setTimeout(städaKundvagn, 100);
+                setTimeout(städaKundvagn, 300);
+            });
         });
     }
 })();
