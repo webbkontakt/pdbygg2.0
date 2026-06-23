@@ -327,9 +327,9 @@ p{
 }
 footer {
     position: relative;
-    border-top: 4px solid #3f2312;
+    border-top: 4px solid #1e2d1a;
     width: 100%;
-    background-color: #3f2312;
+    background-color: #1e2d1a;
     color: white;
     padding: 60px 0px 40px 0px; /* Ökat padding i toppen så att texten inte krockar med triangeln */
     
@@ -343,6 +343,23 @@ footer {
         100% 100%, 
         0% 100%
     );
+}
+#indexfooter {
+    clip-path: none !important; 
+}
+
+#indexfooter::before {
+    content: "";
+    position: absolute;
+    top: -4px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 30px solid white;
+    z-index: 10;
 }
 
 .payment-icons {
