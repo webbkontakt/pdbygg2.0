@@ -101,8 +101,8 @@ document.querySelectorAll("#meny a").forEach(link => {
 
         const doc = iframe.contentDocument;
 
-        // Fixa radpriser, totalsumma och belopp
-        const priser = doc.querySelectorAll('.shopify-buy__cart-item__price, .shopify-buy__cart-subtotal__price, .shopify-buy__cart-subtotal__amount');
+        // FIX: Letar efter ALLA element som innehåller ordet "price" eller "amount" i sina klassnamn
+        const priser = doc.querySelectorAll('[class*="price"], [class*="amount"]');
         priser.forEach(el => {
             let text = el.textContent;
             if (text.includes('$')) {
@@ -188,7 +188,6 @@ document.querySelectorAll("#meny a").forEach(link => {
                 }
             });
 
-            // FIX: Lagt till "width": "100%" och anpassat padding för en bredare knapp
             const prodOptions = {
                 "product": {
                     "moneyFormat": "%7B%7Bamount_with_space_separator%7D%7D%20kr",
