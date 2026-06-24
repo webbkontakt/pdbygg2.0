@@ -332,9 +332,6 @@
         position: relative;
         display: block;
     }
-    html, body {
-        background-attachment: scroll; /* Låter bilden scrolla med naturligt på mobilen */
-    }
 }
 
 /* ==========================================
