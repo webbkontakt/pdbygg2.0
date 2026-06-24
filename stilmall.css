@@ -1103,6 +1103,7 @@ input[type=text], select, textarea {
 }
 .produkt-container {
     flex-wrap: wrap;
+    padding-top: 250px;
 }
 
 .video-container {
@@ -1120,7 +1121,7 @@ input[type=text], select, textarea {
     justify-content: left;
 }
 .instruction-list li{
-    line-height: 40px;
+    line-height: 30px;
     display: flex;
     justify-content: left;
 }
