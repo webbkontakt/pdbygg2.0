@@ -429,7 +429,7 @@ footer {
     flex-direction: column;
     list-style-type: none;
     text-decoration: none;
-    overflow: visible;
+    overflow: hidden;
 }
 .instagram-div{
     background-color: rgb(255, 255, 255);
