@@ -1,11 +1,9 @@
-// ================== HEADER SCROLL ==================
 window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
     document.getElementById('myHeader')?.classList.toggle('scrolled', scrollY > 50);
     document.getElementById('logga')?.classList.toggle('scrolled', scrollY > 50);
 });
 
-// ================== COOKIES ==================
 document.addEventListener('DOMContentLoaded', () => {
     const overlay = document.getElementById('cookie-overlay');
     const banner = document.getElementById('cookie-banner');
@@ -62,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// ================== FADES ==================
 const fadeEls = document.querySelectorAll('.fade-in');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -71,7 +68,6 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.2 });
 fadeEls.forEach(el => observer.observe(el));
 
-// ================== MENY ==================
 function toggleMeny() {
     const meny = document.getElementById("meny");
     meny.classList.toggle("show");
@@ -83,40 +79,50 @@ document.querySelectorAll("#meny a").forEach(link => {
     });
 });
 
-// ================== SHOPIFY BUY BUTTON INIT ==================
 (function () {
     var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
     function loadScript() {
         var script = document.createElement('script');
-        script.async = true; script.src = scriptURL;
+        script.async = true; 
+        script.src = scriptURL;
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
         script.onload = ShopifyBuyInit;
     }
-    if (window.ShopifyBuy) { if (window.ShopifyBuy.UI) { ShopifyBuyInit(); } else { loadScript(); } } else { loadScript(); }
-
-    // Global städfunktion som tvättar bort $ och Subtotal
-    function städaKundvagn() {
-        const iframe = document.querySelector('#shopify-cart-trigger iframe');
-        if (!iframe || !iframe.contentDocument) return;
-
-        const doc = iframe.contentDocument;
-
-        // FIX: Letar efter ALLA element som innehåller ordet "price" eller "amount" i sina klassnamn
-        const priser = doc.querySelectorAll('[class*="price"], [class*="amount"]');
-        priser.forEach(el => {
-            let text = el.textContent;
-            if (text.includes('$')) {
-                let renSiffra = text.replace('$', '').replace('.00', '').trim();
-                el.textContent = renSiffra + " kr";
-            }
-        });
-
-        // Översätt "Subtotal" till "Totalt:"
-        const subtotalTitel = doc.querySelector('.shopify-buy__cart-subtotal__title');
-        if (subtotalTitel && (subtotalTitel.textContent.toLowerCase().includes('subtotal') || subtotalTitel.textContent.includes('Total'))) {
-            subtotalTitel.textContent = 'Totalt:';
-        }
+    if (window.ShopifyBuy) { 
+        if (window.ShopifyBuy.UI) { 
+            ShopifyBuyInit(); 
+        } else { 
+            loadScript(); 
+        } 
+    } else { 
+        loadScript(); 
     }
+
+    function städaKundvagn() {
+        const iframes = document.querySelectorAll('iframe');
+        iframes.forEach(iframe => {
+            try {
+                const doc = iframe.contentDocument || iframe.contentWindow?.document;
+                if (!doc) return;
+
+                const textNodes = [];
+                const walk = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT, null, false);
+                let n;
+                while (n = walk.nextNode()) {
+                    if (n.nodeValue.includes('$')) {
+                        n.nodeValue = n.nodeValue.replace('$', '').replace('.00', '').trim() + ' kr';
+                    }
+                }
+
+                const subtotal = doc.querySelector('.shopify-buy__cart-subtotal__title');
+                if (subtotal && (subtotal.textContent.toLowerCase().includes('subtotal') || subtotal.textContent.includes('Total'))) {
+                    subtotal.textContent = 'Totalt:';
+                }
+            } catch (e) {}
+        });
+    }
+
+    setInterval(städaKundvagn, 100);
 
     function ShopifyBuyInit() {
         var client = ShopifyBuy.buildClient({
@@ -126,14 +132,21 @@ document.querySelectorAll("#meny a").forEach(link => {
         });
 
         ShopifyBuy.UI.onReady(client).then(function (ui) {
+            const commonMoney = "{{amount}} kr";
+
             ui.createComponent('cart', {
                 node: document.getElementById('shopify-cart-trigger'),
+                moneyFormat: commonMoney,
                 options: {
                     "global": {
-                        "moneyFormat": "%7B%7Bamount_with_space_separator%7D%7D%20kr"
+                        "moneyFormat": commonMoney
+                    },
+                    "lineItem": {
+                        "moneyFormat": commonMoney
                     },
                     "cart": {
                         "popup": false,
+                        "moneyFormat": commonMoney,
                         "styles": {
                             "button": {
                                 "background-color": "#79bc55",
@@ -151,27 +164,11 @@ document.querySelectorAll("#meny a").forEach(link => {
                         },
                         "DOMEvents": {
                             "render": function (component) {
-                                // 1. Uppdatera antalet i din egna HTML-ikon
                                 const antalSpan = document.getElementById('vagn-antal');
                                 if (antalSpan) {
                                     antalSpan.textContent = component.model.lineItems.reduce((total, item) => total + item.quantity, 0);
                                 }
-
-                                // 2. Starta bevakaren live inuti iframen
-                                setTimeout(function() {
-                                    const iframe = document.querySelector('#shopify-cart-trigger iframe');
-                                    if (iframe && iframe.contentDocument && !iframe.dataset.observerStarted) {
-                                        iframe.dataset.observerStarted = "true";
-                                        
-                                        const observer = new MutationObserver(städaKundvagn);
-                                        observer.observe(iframe.contentDocument.body, {
-                                            childList: true,
-                                            subtree: true,
-                                            characterData: true
-                                        });
-                                    }
-                                    städaKundvagn();
-                                }, 50);
+                                städaKundvagn();
                             }
                         }
                     },
@@ -190,7 +187,7 @@ document.querySelectorAll("#meny a").forEach(link => {
 
             const prodOptions = {
                 "product": {
-                    "moneyFormat": "%7B%7Bamount_with_space_separator%7D%7D%20kr",
+                    "moneyFormat": commonMoney,
                     "styles": {
                         "product": {
                             "@media (min-width: 601px)": {
@@ -219,12 +216,6 @@ document.querySelectorAll("#meny a").forEach(link => {
 
             var n2 = document.getElementById('product-component-1778259314915');
             if (n2) { ui.createComponent('product', { id: '10766910390610', node: n2, options: prodOptions }); }
-            
-            window.addEventListener('mousemove', städaKundvagn);
-            window.addEventListener('click', function() {
-                setTimeout(städaKundvagn, 100);
-                setTimeout(städaKundvagn, 300);
-            });
         });
     }
 })();

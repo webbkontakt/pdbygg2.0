@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
-
+*, *::before, *::after {
+    box-sizing: border-box;
+}
 html {
     box-sizing: border-box;
     width: 100%;
@@ -11,7 +13,9 @@ body {
     font-family: 'Inter', sans-serif;
     letter-spacing: -.2px;
     position: relative;
-    z-index: 1; /* Tvingar allt innehåll i bodyn att lägga sig ovanpå bakgrunden */
+    min-width: 320px;
+    z-index: 1;
+    overflow-x: hidden;
 }
 
 body::before {
@@ -27,7 +31,6 @@ body::before {
     background-position: center center;
     background-repeat: no-repeat;
     filter: contrast(105%);
-    /* Tvingar webbläsaren att rendera bilden med högsta möjliga skärpa */
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
 }
@@ -36,9 +39,8 @@ body::before {
     display: none;
 }
 
-/* ÄNDRAD: Lagt till padding på sidorna och box-sizing för att rymma logga + vagn snyggt */
 header{
-    position: absolute !important; /* ÄNDRAD från fixed till absolute */
+    position: absolute !important;
     width: 100%;
     height: 70px;
     display: flex;
@@ -82,7 +84,6 @@ p{
     font-size: 16px;
 }
 
-/* ÄNDRAD: Tog bort fast margin-left. Nu helt centrerad oavsett skärm */
 #meny{
     display: flex;
     justify-content: center;
@@ -143,13 +144,14 @@ p{
     font-size: 60px;
 }
 .kraftborsten {
-  display: inline-block;
-  text-align: center;
-  border: 1px solid rgb(163, 163, 163);
-  align-items: center;
-  position: relative;
-  height: 460px;
-  border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    border: 1px solid black;
+    height: 460px;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 250px;
 }
 
 .kraftborsten:hover{
@@ -161,7 +163,7 @@ p{
 }
 
 .bild-wrap {
-  width: 250px;
+  width: 100%;
   height: 250px;
   position: relative;
   overflow: hidden;
@@ -349,13 +351,12 @@ p{
 }
 footer {
     position: relative;
-    border-top: 4px solid #1e2d1a;
+    border-top: 4px solid #21271f;
     width: 100%;
-    background-color: #1e2d1a;
+    background-color: #21271f;
     color: white;
-    padding: 60px 0px 40px 0px; /* Ökat padding i toppen så att texten inte krockar med triangeln */
-    
-    /* FIX: Klipper ut en transparent triangel i mitten av footerns överkant */
+    padding: 60px 0px 40px 0px;
+
     clip-path: polygon(
         0% 0%, 
         calc(50% - 30px) 0%, 
@@ -544,9 +545,6 @@ footer {
     transform: scale(0.90);
 }
 
-
-/* ================= COOKIE SYSTEM ================= */
-
 #cookie-overlay {
   position: fixed;
   top: 0;
@@ -686,8 +684,6 @@ body.cookie-blocked {
     transform: scale(0.85) 
 }
 
-/*behandlingar*/
-
 .behandlingar-content{
     display: flex;
     flex-direction: column;
@@ -736,7 +732,6 @@ body.cookie-blocked {
     flex-direction: row;
     gap: 60px;
 }
-/*kontakt*/
 
 .kontakt-content{
     width: 100%;
@@ -802,13 +797,16 @@ body.cookie-blocked {
     color: white;
 }
 
-.bildspel{
+.bildspel {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
     position: relative;
     z-index: 5;
+    width: 100%;
 }
 .bildspel-div{
     display: flex;
@@ -818,14 +816,19 @@ body.cookie-blocked {
     position: relative;
     overflow: visible;
 }
-.bildspel-div img{
-    width: 500px;
-    height: 500px;
-    margin: 50px;
+.bildspel-div img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
     display: block;
+    margin: 30px;
 }
 .bildspel a:hover{
     transform: scale(0.95);
+}
+.bildspel-div a {
+    position: relative;
+    display: inline-block;
 }
 
 .texten {
@@ -837,6 +840,9 @@ body.cookie-blocked {
     font-size: 2rem; 
     font-weight: bold;
     text-shadow: 0 0 10px black;
+    text-align: center;
+    width: 100%;
+    pointer-events: none;
 }
 
 
@@ -848,7 +854,10 @@ body.cookie-blocked {
 
 .shopify-buy__cart-toggle {
     display: none !important;
+    margin: 0;
+    padding: 0;
 }
+
 
 header.scrolled .cart-icon i {
     color: black;
@@ -879,7 +888,6 @@ header.scrolled .cart-icon i {
     pointer-events: all;
 }
 
-/* ÄNDRAD: Tog bort position: fixed så ikonen inte flyger fritt utanför headern */
 .cart-icon {
     top: 20px;
     right: 20px;
@@ -898,7 +906,6 @@ header.scrolled .cart-icon i {
     background: #fff !important;
 }
 
-/* ÄNDRAD: Tog bort hårdkodad bredd, lät den sköta sig med flex-layouten */
 #shopify-cart-trigger {
     width: 45px;
     height: 45px;
@@ -909,9 +916,6 @@ header.scrolled .cart-icon i {
     height: 100% !important;
     width: 100% !important;
 }
-
-
-/* KONTAKT */
 
 input[type=text], select, textarea {
     width: 100%; 
