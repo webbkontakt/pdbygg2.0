@@ -1,3 +1,20 @@
+const GA_MEASUREMENT_ID = 'G-BYHB0RVHXM';
+
+function laddaGoogleAnalytics() {
+    if (window.gaLoaded) return;
+    window.gaLoaded = true;
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', GA_MEASUREMENT_ID);
+}
+
 window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
     document.getElementById('myHeader')?.classList.toggle('scrolled', scrollY > 50);
@@ -31,6 +48,16 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('cookie-blocked');
     } else {
         stangBanner();
+        if (cookiesAccepted) {
+            try {
+                const parsed = JSON.parse(cookiesAccepted);
+                if (parsed.analytics) {
+                    laddaGoogleAnalytics();
+                }
+            } catch (e) {
+                console.error('Kunde inte läsa sparade cookies', e);
+            }
+        }
     }
 
     acceptAll?.addEventListener('click', () => {
@@ -39,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             analytics: true,
             marketing: true
         }));
+        laddaGoogleAnalytics();
         stangBanner();
     });
 
@@ -56,6 +84,11 @@ document.addEventListener('DOMContentLoaded', () => {
             analytics,
             marketing
         }));
+
+        if (analytics) {
+            laddaGoogleAnalytics();
+        }
+
         stangBanner();
     });
 });
@@ -157,10 +190,10 @@ document.querySelectorAll("#meny a").forEach(link => {
                         },
                         "text": { 
                             "title": "Kundvagn", 
-                            "total": "Totalt",
-                            "empty": "Din kundvagn är tom.",
-                            "notice": "Frakt och rabattkoder finns i kassan.",
-                            "button": "Slutför köp"
+                            "total": "Totalt", 
+                            "empty": "Din kundvagn är tom.", 
+                            "notice": "Frakt och rabattkoder finns i kassan.", 
+                            "button": "Slutför köp" 
                         },
                         "DOMEvents": {
                             "render": function (component) {
