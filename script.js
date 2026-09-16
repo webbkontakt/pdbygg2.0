@@ -145,7 +145,7 @@ document.querySelectorAll("#meny a").forEach(link => {
                         "moneyFormat": commonMoney
                     },
                     "cart": {
-                        "popup": false,
+                        "popup": true,
                         "moneyFormat": commonMoney,
                         "styles": {
                             "button": {
