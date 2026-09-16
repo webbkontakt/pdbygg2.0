@@ -1109,11 +1109,19 @@ input[type=text], select, textarea {
     color: black;
 }
 
-.tack-container{
+.tack-container {
     width: 100%;
-    background-color: rgb(236, 208, 182);
+    background-color: transparent;
+    box-sizing: border-box;
+    /* 70px (headerns höjd) + 50px marginal i toppen, 50px marginal i botten */
+    padding: 120px 0 50px 0; 
+    min-height: 100vh; /* Tar upp hela skärmhöjden så det kan centreras */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.tack-kolumn{
+
+.tack-kolumn {
     width: 60%;
     background-color: rgb(247, 247, 247);
     display: flex;
@@ -1121,8 +1129,8 @@ input[type=text], select, textarea {
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    padding: 100px 0;
-    min-height: 500px;
+    padding: 60px 20px;
+    box-sizing: border-box;
 }
 .produkt-container {
     flex-wrap: wrap;

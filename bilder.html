@@ -6,7 +6,6 @@
     <title>PD Bygg Jonkoping</title>
     <link rel="stylesheet" href="stilmall.css">
     <link rel="stylesheet" href="mediaquery.css">
-    <link rel="stylesheet" href="cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
@@ -43,62 +42,84 @@
             <div class="content">
                 <div class="content-text">
                     <h2><span class="storbokstav">S</span>kapa ditt drömhem <br>med - PD Bygg</h2>
-                    <h3>Snickeri, Murning och Måleri</h3>
-                    <a href="kontakt.html" class="kontaktknapp">BESTÄLL ARBETE</a>
+                    <h3>Snickeri, Murning och Plattsättning</h3>
+                    <a href="arbete.html" class="kontaktknapp1">BESTÄLL ARBETE</a>
                     <a href="omoss.html" id="readmore"></a>
                 </div>
                 <img src="bilder/badrum.png" id="badrum">
+                <a href="arbete.html" class="kontaktknapp2">BESTÄLL ARBETE</a>
             </div>
         </div>
 
         <div class="info">
             <div class="kraftborsten" data-name="Kraftborsten" data-price="500">
+            <a href="kraftborse.html">
                 <div class="bild-wrap">
-                    <img src="bilder/toaborste1.png" class="normal">
-                    <img src="bilder/toaborste2.png" class="hover-img">
+                    <img src="bilder/kraftborsteTransparent.png" class="normal">
+                    <img src="bilder/kraftborsteTransparent.png" class="hover-img" style="display: none;">
                 </div>
                 <p class="product-name">Kraftborste</p>
-                <p>för alla skruvdragare</p>
+                <p>Passar alla skruvdragare</p>
+                </a>
                 <div class="pris-container">
-                    <p class="pris">299:-</p>
-                    <button onclick="handleAddToCart(this, 'Kraftborsten', 299, 'bilder/toaborste1')" class="addtocart">KÖP</button>
+                <div class="pris-div">
+                    <p class="newprice">499:-</p>
+                    <p class="oldprice">649:-</p>
                 </div>
+                <div id='product-component-1778246133497'></div>
+            </div>
             </div>
 
             <div class="kraftborsten" data-name="Hinklåset" data-price="500">
+                <a href="hinklas.html">
                 <div class="bild-wrap">
-                    <img src="bilder/hink1.png" class="normal">
-                    <img src="bilder/hink2.png" class="hover-img">
+                    <img src="bilder/hinkTransparent.png" class="normal">
+                    <img src="bilder/hinkTransparent.png" class="hover-img" id="hinklåsID" style="visibility: hidden;">
                 </div>
                 <p class="product-name">Hinklås</p>
-                <p>för hinkar med <br>omkrets 30-50cm</p>
+                <p>Diameter  Ø33,5 cm</p>
+                </a>
                 <div class="pris-container">
-                    <p class="pris">499:-</p>
-                    <button onclick="handleAddToCart(this, 'Hinklåset', 499, 'bilder/hink1')" class="addtocart">KÖP</button>
-                </div>
+                    <div class="pris-div">
+                        <p class="newprice">799:-</p>
+                        <p class="oldprice">999:-</p>
+                    </div>
+                    <div id='product-component-1778259314915'></div>                
+                </div>    
+                
+                
+            </div>
+            <div class="blackweek">
+                <img src="icons/sale.svg" style="display: none;">
             </div>
         </div>
 
-        <div class="instagram-div fade-in">
-            <a href="https://www.instagram.com/fidde.ku/">
+        
+
+        <div class="bildspel">
+            <div class="bildspel-div">
+                <a href="produkter.html"><img src="bilder/produkt.jpg">
+                <div class="texten">PRODUKTER</div></a>
+            </div>
+            <div class="bildspel-div">
+                <a href="arbete.html"><img src="bilder/trappa.png">
+                <div class="texten">BESTÄLL ARBETE</div></a>
+            </div>
+            <div class="bildspel-div">
+                <a href="omoss.html"><img src="bilder/garage.png">
+                <div class="texten">GALLERI</div></a>
+            </div>
+        </div>
+
+        <div class="instagram-div">
+            <a href="https://www.instagram.com/pdbygg/?hl=en">
                 <h3>Följ oss på Instagram</h3>
                 <i class="fa-brands fa-instagram"></i>
             </a>
             <a href="https://www.instagram.com/pdbygg/?hl=en" class="instatagg">@pdbyggab</a>
         </div>
 
-        <div class="extra-div fade-in">
-            <div class="extra-column2">
-                <img src="bilder/badrum.png" id="extra-fade-img">
-            </div>
-            <div class="extra-column1">
-                <h3 class="extrah3">TA HAND OM DITT HÅR HOS OSS</h3>
-                <h3 class="extra-h3">Vi hjälper dig med din behandling</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo fugiat ullam odit reiciendis, consectetur cupiditate illum, autem eum natus quo, nam aperiam. Amet minus exercitationem dolores, explicabo dolorum atque quis!</p>
-            </div>
-        </div>
-
-    <footer>
+    <footer id="indexfooter">
         <div class="footer-content">
             <div class="meny-footer">
                 <div class="footer-column1">
@@ -106,7 +127,7 @@
                     <ul>
                         <li><a href=""><i class="fa-solid fa-phone"></i>+46762082095</a></li>
                         <li><a href=""><i class="fa-solid fa-envelope"></i>pdbyggab@hotmail.com</a></li>
-                        <a href="arbete.html" class="bestallarbeteknapp">BESTÄLL ARBETE</a>
+                        <a href="arbete.html" class="kontaktknapp">BESTÄLL ARBETE</a>
                     </ul>
                 </div>
                 <div class="footer-column2">
@@ -122,6 +143,34 @@
             </div>
         </div>
         <p class="reklam">Made by webbkontakt.se</p>
+    <div class="payment-icons">
+        <div class="payment-card">
+            <img src="icons/visa.svg" alt="Visa">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/mastercard.svg" alt="Mastercard">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/swish.svg" alt="Swish" id="swishicon">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/klarna.svg" alt="Klarna">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/paypal.svg" alt="PayPal">
+        </div>
+
+        <div class="payment-card">
+            <img src="icons/applepay.svg" alt="Apple Pay">
+        </div>
+        <div class="payment-card">
+            <img src="icons/googlepay.svg" alt="Google Pay">
+        </div>
+    </div>
         <p class="copyright">©2014 pdbygg</p>
     </footer>
 
@@ -131,13 +180,14 @@
         <button id="accept-all">Acceptera alla</button>
         <button id="customize">Anpassa</button>
     </div>
-    <div id="cookie-settings" class="cookie-settings" style="display: none;">
-        <p>Välj vilka cookies du godkänner:</p>
-        <label><input type="checkbox" id="essential" checked disabled> Nödvändiga (krävs)</label><br>
-        <label><input type="checkbox" id="analytics"> Analys</label><br>
-        <label><input type="checkbox" id="marketing"> Marknadsföring</label><br>
-        <button id="save-settings">Acceptera</button>
+    <div id="cookie-settings" class="cookie-settings">
+  <p>Välj vilka cookies du godkänner:</p>
+    <label><input type="checkbox" id="essential" checked disabled> Nödvändiga (krävs)</label><br>
+    <label><input type="checkbox" id="analytics"> Analys</label><br>
+    <label><input type="checkbox" id="marketing"> Marknadsföring</label><br>
+    <button id="save-settings">Acceptera</button>
     </div>
+
 
     <script src="script.js"></script>
 </body>
